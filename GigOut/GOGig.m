@@ -22,7 +22,6 @@
 @synthesize venueStreet = venueStreet_;
 @synthesize venueZip = venueZip_; 
 @synthesize venueUrl = venueUrl_;
-@synthesize venueImgUrl = venueImgUrl_;
 @synthesize venuePhone = venuePhone_;
 @synthesize startDate = startDate_;
 @synthesize description = description_; 
@@ -42,7 +41,6 @@
     [venueStreet_ release];
     [venueZip_ release];
     [venueUrl_ release];
-    [venueImgUrl_ release];
     [venuePhone_ release];
     [startDate_ release];
     [description_ release];

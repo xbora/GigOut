@@ -104,14 +104,14 @@
                             gig.venueLat = [geopoint objectForKey:@"geo:lat"];
                             gig.venueLng = [geopoint objectForKey:@"geo:long"];
                             
-                            gig.venueCity = [venue objectForKey:@"city"];
-                            gig.venueCountry = [venue objectForKey:@"country"];
-                            gig.venueStreet = [venue objectForKey:@"street"];
-                            gig.venueZip = [venue objectForKey:@"postalcode"];
+                            gig.venueCity = [location objectForKey:@"city"];
+                            gig.venueCountry = [location objectForKey:@"country"];
+                            gig.venueStreet = [location objectForKey:@"street"];
+                            gig.venueZip = [location objectForKey:@"postalcode"];
                             gig.venueUrl = [venue objectForKey:@"website"];
                             gig.venuePhone = [venue objectForKey:@"phonenumber"];
-                            gig.description = [venue objectForKey:@"description"];
-                            gig.startDate = [venue objectForKey:@"startDate"];
+                            gig.description = [event objectForKey:@"description"];
+                            gig.startDate = [event objectForKey:@"startDate"];
 
                             
                             [gigs addObject:gig];

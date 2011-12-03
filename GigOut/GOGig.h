@@ -21,7 +21,6 @@
     NSString *venueStreet_;
     NSString *venueZip_;
     NSString *venueUrl_;
-    NSString *venueImgUrl_;
     NSString *venuePhone_;
     NSDate *startDate_;
     NSString *description_;
