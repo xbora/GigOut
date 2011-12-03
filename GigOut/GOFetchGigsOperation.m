@@ -65,6 +65,12 @@
         }
         
         //check to see if we have been cancelled
+        if (!self isCancelled)
+        {
+            if (dictionary) {
+                
+            }
+        }
         
         
         
