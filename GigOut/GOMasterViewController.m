@@ -48,6 +48,7 @@
         self.activityIndicator = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge] autorelease];
         activityIndicator.frame = CGRectMake(140, 240, 40, 40);
         [self.view addSubview:activityIndicator];
+        self.tableView.rowHeight = 84;
     }
     return self;
 }
@@ -198,7 +199,11 @@
         self.gigsArray = nil;
     }
     // Retrieve the information to show into the tableView
-    self.gigsArray = [[[NSArray alloc] initWithArray:_gigsArray] autorelease];}
+    self.gigsArray = [[[NSArray alloc] initWithArray:_gigsArray] autorelease];
+    
+    [self.tableView reloadData];
+
+}
 
 
 #pragma mark - View lifecycle
