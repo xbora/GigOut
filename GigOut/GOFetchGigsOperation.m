@@ -111,6 +111,12 @@
                             gig.venueUrl = [venue objectForKey:@"website"];
                             gig.venuePhone = [venue objectForKey:@"phonenumber"];
                             gig.description = [event objectForKey:@"description"];
+                            NSArray *imgArray = [event objectForKey:@"image"];
+                            for (NSDictionary *imgJSON in imgArray) {
+                                if ([[imgJSON valueForKey:@"size"] isEqualToString:@"medium"]) {
+                                        gig.artistImgUrl = [imgJSON valueForKey:@"#text"];
+                                    }
+                            }
                             gig.startDate = [event objectForKey:@"startDate"];
 
                             

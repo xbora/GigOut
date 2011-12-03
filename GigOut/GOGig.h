@@ -12,6 +12,7 @@
 @interface GOGig : NSObject {
     NSString *gigName_;
     NSString *artistName_;
+    NSString *artistImgUrl;
     NSString *venueId_;
     NSString *venueName_;
     NSString *venueLat_;
@@ -37,7 +38,7 @@
 @property (nonatomic, copy) NSString *venueStreet;
 @property (nonatomic, copy) NSString *venueZip;
 @property (nonatomic, copy) NSString *venueUrl;
-@property (nonatomic, copy) NSString *venueImgUrl;
+@property (nonatomic, copy) NSString *artistImgUrl;
 @property (nonatomic, copy) NSString *venuePhone;
 @property (nonatomic, retain) NSString *startDate;
 @property (nonatomic, copy) NSString *description;

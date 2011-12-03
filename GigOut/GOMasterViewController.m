@@ -125,9 +125,10 @@
     GOGig *gigEvent = (GOGig*)[self.gigsArray objectAtIndex:indexPath.row];
     
     if(gigEvent) {
-        //ULImageView* imageView = (ULImageView*)[cell.contentView viewWithTag:IMAGE_TAG];
-        //NSString* eventImageUrlString = gigEvent.venueImgUrl;
-        //imageView.urlStr = eventImageUrlString;
+        ULImageView* imageView = (ULImageView*)[cell.contentView viewWithTag:IMAGE_TAG];
+        NSString* eventImageUrlString = gigEvent.artistImgUrl;
+        NSLog(@"The image url is %@",gigEvent.artistImgUrl);
+        imageView.urlStr = eventImageUrlString;
         
         UILabel* titleLabel = (UILabel*)[cell.contentView viewWithTag:TITLE_TAG];
         NSString *capitalize = gigEvent.artistName;
@@ -137,12 +138,12 @@
         UILabel* dateLabel =  (UILabel*)[cell.contentView viewWithTag:DATE_TAG];
         
         if(gigEvent.startDate) {
-            NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
-            [formatter setDateFormat:@"EEEE, d MMM yyyy hh:mm aaa"];
-            NSString *theString = [formatter stringFromDate:gigEvent.startDate];
-            NSString *capitalize = theString;
-            capitalize = [NSString stringWithFormat:@"%@%@",[[capitalize substringToIndex:1] uppercaseString],[capitalize substringFromIndex:1] ];       
-            dateLabel.text = capitalize;
+//            NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+//            [formatter setDateFormat:@"EEEE, d MMM yyyy hh:mm aaa"];
+//            NSString *theString = [formatter stringFromDate:gigEvent.startDate];
+//            NSString *capitalize = theString;
+//            capitalize = [NSString stringWithFormat:@"%@%@",[[capitalize substringToIndex:1] uppercaseString],[capitalize substringFromIndex:1] ];       
+            dateLabel.text = [gigEvent.startDate uppercaseString];
         } else {
             dateLabel.text = @"";
         }
