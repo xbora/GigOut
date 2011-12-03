@@ -9,11 +9,20 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/Corelocation.h>
 
+@protocol GOFetchGigsOperationDelegate <NSObject>
+
+- (void)fetchRequestDidFinishWithArray:(NSArray *)gigsArray;
+
+@end
+
 @interface GOFetchGigsOperation : NSOperation {
     CLLocation *location_;
+    id <GOFetchGigsOperationDelegate> delegate;
+
 }
 
 @property (nonatomic, retain) CLLocation *location;
+@property (nonatomic, assign) id <GOFetchGigsOperationDelegate> delegate;
 
 - (id) initWithLocation: (CLLocation *)location;
 

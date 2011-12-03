@@ -15,6 +15,7 @@
 @implementation GOFetchGigsOperation
 
 @synthesize location = location_;
+@synthesize delegate;
 
 #pragma mark - Initialization
 
@@ -42,6 +43,7 @@
 
 - (void) dealloc
 {
+    self.delegate = nil;
     [location_ release];
     [super dealloc];
 }
@@ -75,13 +77,20 @@
         }
         
         //check to see if we have been cancelled
-        if (!self isCancelled)
-        {
-            if (dictionary) {
-                
-            }
-        }
+//        if (!self isCancelled)
+//        {
+//            if (dictionary) {
+//                
+//            }
+//        }
         
+        // MIKEEEE HI, how are you? Btw this is the array to be passed through the delegate. C u. Luigi.
+        NSArray *gigsArray = [NSArray array];
+        
+        if (delegate != nil &&
+            [delegate respondsToSelector:@selector(fetchRequestDidFinishWithArray:)]){
+            [delegate fetchRequestDidFinishWithArray:gigsArray];
+        }
         
         
     }

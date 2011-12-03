@@ -32,7 +32,6 @@
 
 - (void)updateGigs
 {
-	PSLogDebug(@"");
 	if (self.locationTimer == nil)
 	{
 		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
@@ -44,7 +43,6 @@
 
 - (void)locationManagerDidTimeout:(NSTimer *)timer
 {
-	PSLogDebug(@"");
 	// Stop timer.
 	[locationTimer_ invalidate];
 	self.locationTimer = nil;
@@ -53,7 +51,6 @@
 	CLLocation *myLocation = locationMgr_.location;
 	if (myLocation == nil)
 	{
-		PSLogWarning(@"CLLocationManager returned a nil location - using hard-coded location");
 		myLocation = [[[CLLocation alloc] initWithLatitude:51.508056 longitude:-0.128056] autorelease];
 	}
 
@@ -63,7 +60,6 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
-	PSLogDebug(@"");
 	// Did we reach our desired accuracy?
 	if (newLocation.horizontalAccuracy <= kCLLocationAccuracyNearestTenMeters)
 	{
