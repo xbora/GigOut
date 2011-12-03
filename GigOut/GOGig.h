@@ -22,6 +22,7 @@
     NSString *venueStreet_;
     NSString *venueZip_;
     NSString *venueUrl_;
+    NSString *venueImgUrl_;
     NSString *venuePhone_;
     NSDate *startDate_;
     NSString *description_;
@@ -40,6 +41,7 @@
 @property (nonatomic, copy) NSString *venueStreet;
 @property (nonatomic, copy) NSString *venueZip;
 @property (nonatomic, copy) NSString *venueUrl;
+@property (nonatomic, copy) NSString *venueImgUrl;
 @property (nonatomic, copy) NSString *venuePhone;
 @property (nonatomic, retain) NSDate *startDate;
 @property (nonatomic, copy) NSString *description;
