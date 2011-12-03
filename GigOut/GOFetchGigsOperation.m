@@ -8,6 +8,8 @@
 
 #import "GOFetchGigsOperation.h"
 #import <CoreLocation/CoreLocation.h>
+#import "GOGig.h"
+#import "GOAppDelegate.h"
 #import "PSLog.h"
 
 @implementation GOFetchGigsOperation
@@ -46,10 +48,10 @@
             NSMutableArray *gigs = [[NSMutableArray alloc] init];
             NSString *apiKey = @"b25b959554ed76058ac220b7b2e0a026";
             //NSUInteger count = kMaxResults;
-            NSUInteger radius = kSearchRadiusMile;
-            NSString *fetchUrlString = [NSString stringWithFormat:@"bla",
-                                        location_.coordinate.latitude,
-                                        location_.coordinate.longitude,
+            NSUInteger radius = kSearchRadiusKms;
+            NSString *fetchUrlString = [NSString stringWithFormat:@"http://ws.audioscrobbler.com/2.0/?method=geo.getevents&lat=%@&lng=%@&format=json&distance=%@&api_key=%@",
+                                        @"51.549751017014245",
+                                        @"-1.494140625",
                                         radius,
                                         apiKey];
             NSURL *fetchUrl = [NSURL URLWithString: fetchUrlString];
@@ -62,6 +64,9 @@
             NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&jsonError];
             
         }
+        
+        //check to see if we have been cancelled
+        
         
         
     }
