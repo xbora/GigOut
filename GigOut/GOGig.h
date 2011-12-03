@@ -24,7 +24,8 @@
     NSString *venueUrl_;
     NSString *venuePhone_;
     NSDate *startDate_;
-    NSString *description_;    
+    NSString *description_;
+    CLLocationCoordinate2D coordinate;
 }
 
 @property (nonatomic, copy) NSString *gigName;

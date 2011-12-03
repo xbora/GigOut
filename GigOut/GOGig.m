@@ -26,6 +26,7 @@
 @synthesize venuePhone = venuePhone_;
 @synthesize startDate = startDate_;
 @synthesize description = description_; 
+@synthesize coordinate = coordinate_;
 
 #pragma mark - Class methods
 
