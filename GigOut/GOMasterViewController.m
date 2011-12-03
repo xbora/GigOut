@@ -125,9 +125,9 @@
     GOGig *gigEvent = (GOGig*)[self.gigsArray objectAtIndex:indexPath.row];
     
     if(gigEvent) {
-        ULImageView* imageView = (ULImageView*)[cell.contentView viewWithTag:IMAGE_TAG];
-        NSString* eventImageUrlString = gigEvent.venueImgUrl;
-        imageView.urlStr = eventImageUrlString;
+        //ULImageView* imageView = (ULImageView*)[cell.contentView viewWithTag:IMAGE_TAG];
+        //NSString* eventImageUrlString = gigEvent.venueImgUrl;
+        //imageView.urlStr = eventImageUrlString;
         
         UILabel* titleLabel = (UILabel*)[cell.contentView viewWithTag:TITLE_TAG];
         NSString *capitalize = gigEvent.artistName;

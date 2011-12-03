@@ -22,7 +22,7 @@
     NSString *venueZip_;
     NSString *venueUrl_;
     NSString *venuePhone_;
-    NSDate *startDate_;
+    NSString *startDate_;
     NSString *description_;
 }
 
@@ -39,7 +39,7 @@
 @property (nonatomic, copy) NSString *venueUrl;
 @property (nonatomic, copy) NSString *venueImgUrl;
 @property (nonatomic, copy) NSString *venuePhone;
-@property (nonatomic, retain) NSDate *startDate;
+@property (nonatomic, retain) NSString *startDate;
 @property (nonatomic, copy) NSString *description;
 
 @end
