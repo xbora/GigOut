@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GOFetchGigsOperation.h"
 
 @class GODetailViewController;
 
-@interface GOMasterViewController : UITableViewController
+@interface GOMasterViewController : UITableViewController <GOFetchGigsOperationDelegate>
 {
     NSOperationQueue *operationQueue_;  
     UIActivityIndicatorView *activityIndicator;
@@ -20,7 +21,7 @@
 
 @property (strong, nonatomic) GODetailViewController *detailViewController;
 @property (nonatomic, retain) NSOperationQueue *operationQueue;
-- (void)loadData;
 
+- (void)loadData;
 
 @end

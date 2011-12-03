@@ -15,6 +15,7 @@
 @implementation GOFetchGigsOperation
 
 @synthesize location = location_;
+@synthesize delegate;
 
 #pragma mark - Initialization
 
@@ -42,6 +43,7 @@
 
 - (void) dealloc
 {
+    self.delegate = nil;
     [location_ release];
     [super dealloc];
 }
@@ -73,7 +75,7 @@
             NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&jsonError];
             
       
-        
+    
             //check to see if we have been cancelled
             if (![self isCancelled])
             {
@@ -126,8 +128,15 @@
                     
                 }
             }
+         
+            
+            if (delegate != nil &&
+                [delegate respondsToSelector:@selector(fetchRequestDidFinishWithArray:)]){
+                [delegate fetchRequestDidFinishWithArray:gigs];
+            }
             
             [gigs release];
+
         
         }  
         

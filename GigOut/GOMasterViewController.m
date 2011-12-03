@@ -33,6 +33,7 @@
 
 - (void)dealloc
 {
+    self.gigsArray = nil;
     [_detailViewController release];
     [operationQueue_ release];
     [super dealloc];
@@ -75,6 +76,7 @@
 - (void)loadData {
     [[self operationQueue] cancelAllOperations];
     GOFetchGigsOperation *operation = [[GOFetchGigsOperation alloc] init];
+    operation.delegate = self;
     [[self operationQueue] addOperation: operation];
     
 }
@@ -87,7 +89,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return [gigsArray count];
 }
 
 // Customize the appearance of table view cells.
@@ -188,6 +190,17 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+#pragma mark - 
+#pragma mark GOFetchGigsOperationDelegate
+- (void)fetchRequestDidFinishWithArray:(NSArray *)_gigsArray{
+    
+    if (gigsArray) {
+        self.gigsArray = nil;
+    }
+    // Retrieve the information to show into the tableView
+    self.gigsArray = [[[NSArray alloc] initWithArray:_gigsArray] autorelease];}
+
+
 #pragma mark - View lifecycle
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -197,9 +210,6 @@
     if (activityIndicator != nil) {
         [activityIndicator startAnimating];
     }
-    
-    // Retrieve the information to show into the tableView
-    self.gigsArray = [NSArray array];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
