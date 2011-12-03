@@ -10,6 +10,11 @@
 
 #import <CoreLocation/CoreLocation.h>
 
+@protocol LocationManagerDelegate <NSObject>
+
+- (void)locationManagerDidUpdateLocation:(CLLocation *)location;
+
+@end
 @interface LocationManager : NSObject <CLLocationManagerDelegate>
 {
     CLLocationManager* m_locationManager;
@@ -24,11 +29,15 @@
     NSTimeInterval m_timeDelta;
     CLLocation* m_currentLocation;
     NSInteger m_numberOfTries;
+    
+    id <LocationManagerDelegate> delegate;
 }
 
 @property(nonatomic,retain)NSString* m_tinyURL;
 @property(readonly,getter=latitude)float latitude;
 @property(readonly,getter=longitude)float longitude;
+
+@property (nonatomic, assign) id <LocationManagerDelegate> delegate;
 
 +(LocationManager*)sharedLocationManager;
 

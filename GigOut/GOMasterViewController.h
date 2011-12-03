@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "GOFetchGigsOperation.h"
+#import "LocationManager.h"
 
 @class GODetailViewController;
 
-@interface GOMasterViewController : UITableViewController <GOFetchGigsOperationDelegate>
+@interface GOMasterViewController : UITableViewController <GOFetchGigsOperationDelegate, LocationManagerDelegate>
 {
     NSOperationQueue *operationQueue_;  
     UIActivityIndicatorView *activityIndicator;

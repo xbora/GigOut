@@ -22,6 +22,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(LocationManager);
 @synthesize latitude;
 @synthesize longitude;
 @synthesize m_tinyURL;
+@synthesize delegate;
 
 -(id)init {
 	self = [super init];
@@ -168,7 +169,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(LocationManager);
     if(newLocation.horizontalAccuracy < 100 || m_numberOfTries > 5) {
         [m_locationManager stopUpdatingLocation];
     }
-
+    
+    if ([delegate respondsToSelector:@selector(locationManagerDidUpdateLocation:)]) {
+        [delegate locationManagerDidUpdateLocation:m_currentLocation];
+    }
 }
 
 -(void)locationManager:(CLLocationManager *)manager

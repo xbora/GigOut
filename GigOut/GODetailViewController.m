@@ -59,7 +59,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.artistImage = [[[ULImageView alloc] initWithFrame:CGRectMake(49., 20., 222., 140.)] autorelease];
-    artistImage.contentMode = UIViewContentModeScaleAspectFill;
+    artistImage.contentMode = UIViewContentModeScaleAspectFit;
     artistImage.urlStr = gigEvent.artistImgUrl;
     [self.view addSubview:artistImage];
     

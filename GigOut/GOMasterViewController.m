@@ -11,7 +11,6 @@
 #import "GOMasterTableViewCell.h"
 #import "ULImageView.h"
 #import "DateUtils.h"
-#import "LocationManager.h"
 #import "GOGig.h"
 #import "GOFetchGigsOperation.h"
 
@@ -49,7 +48,7 @@
         activityIndicator.frame = CGRectMake(140, 180, 40, 40);
         [self.view addSubview:activityIndicator];
         self.tableView.rowHeight = 84;
-        
+        [[LocationManager sharedLocationManager] setDelegate:self];
         [[LocationManager sharedLocationManager] startUpdates];
     }
     return self;
@@ -162,16 +161,18 @@
     CLLocation* locationCoords = [[CLLocation alloc] initWithLatitude:[gigEvent.venueLat floatValue]
                                                             longitude:[gigEvent.venueLng floatValue]];
     CLLocation* currentLoc = [[LocationManager sharedLocationManager] currentLocation];
-    float distance = [currentLoc distanceFromLocation:locationCoords] * 0.000621371192;
-    
-    // Make the distance different once it is more then 10 miles away.
-    NSString *numberformatter = [NSString stringWithFormat:@"%0.1f", distance];
-    float floattest = [numberformatter floatValue];
-    if(floattest > 9.9){
-        distanceLabel.text = [NSString stringWithFormat:@"%0.0f", distance];
-    }
-    else{
-        distanceLabel.text = [NSString stringWithFormat:@"%0.1f", distance];
+    if (currentLoc != nil) {
+        float distance = [currentLoc distanceFromLocation:locationCoords] * 0.000621371192;
+        
+        // Make the distance different once it is more then 10 miles away.
+        NSString *numberformatter = [NSString stringWithFormat:@"%0.1f", distance];
+        float floattest = [numberformatter floatValue];
+        if(floattest > 9.9){
+            distanceLabel.text = [NSString stringWithFormat:@"%0.0f", distance];
+        }
+        else{
+            distanceLabel.text = [NSString stringWithFormat:@"%0.1f", distance];
+        }
     }
     
     [locationCoords release];
@@ -197,6 +198,14 @@
     if (activityIndicator != nil && [activityIndicator isAnimating]) {
         [activityIndicator stopAnimating];
     }
+}
+
+#pragma mark -
+#pragma mark LocationManagerDelegate
+
+- (void)locationManagerDidUpdateLocation:(CLLocation *)location{
+
+    [self.tableView reloadData];
 }
 
 #pragma mark - View lifecycle
