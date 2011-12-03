@@ -16,7 +16,6 @@
 		876C694E148A6373000ECF1C /* GOMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 876C694D148A6373000ECF1C /* GOMasterViewController.m */; };
 		876C6951148A6373000ECF1C /* GODetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 876C6950148A6373000ECF1C /* GODetailViewController.m */; };
 		876C6954148A6374000ECF1C /* GOMasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 876C6952148A6373000ECF1C /* GOMasterViewController.xib */; };
-		876C6957148A6374000ECF1C /* GODetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 876C6955148A6374000ECF1C /* GODetailViewController.xib */; };
 		876C6969148A671F000ECF1C /* GOFetchGigsOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 876C6968148A671F000ECF1C /* GOFetchGigsOperation.m */; };
 		876C696B148A6869000ECF1C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 876C696A148A6869000ECF1C /* CoreLocation.framework */; };
 		876C6970148A7A2A000ECF1C /* GOGig.m in Sources */ = {isa = PBXBuildFile; fileRef = 876C696F148A7A2A000ECF1C /* GOGig.m */; };
@@ -76,7 +75,6 @@
 		876C694F148A6373000ECF1C /* GODetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GODetailViewController.h; sourceTree = "<group>"; };
 		876C6950148A6373000ECF1C /* GODetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GODetailViewController.m; sourceTree = "<group>"; };
 		876C6953148A6374000ECF1C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/GOMasterViewController.xib; sourceTree = "<group>"; };
-		876C6956148A6374000ECF1C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/GODetailViewController.xib; sourceTree = "<group>"; };
 		876C6967148A671F000ECF1C /* GOFetchGigsOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GOFetchGigsOperation.h; sourceTree = "<group>"; };
 		876C6968148A671F000ECF1C /* GOFetchGigsOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOFetchGigsOperation.m; sourceTree = "<group>"; };
 		876C696A148A6869000ECF1C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -215,7 +213,6 @@
 			isa = PBXGroup;
 			children = (
 				876C6952148A6373000ECF1C /* GOMasterViewController.xib */,
-				876C6955148A6374000ECF1C /* GODetailViewController.xib */,
 			);
 			name = Xib;
 			sourceTree = "<group>";
@@ -353,7 +350,6 @@
 			files = (
 				876C6945148A6373000ECF1C /* InfoPlist.strings in Resources */,
 				876C6954148A6374000ECF1C /* GOMasterViewController.xib in Resources */,
-				876C6957148A6374000ECF1C /* GODetailViewController.xib in Resources */,
 				BD11C22F148AB30B002F35C6 /* BACK-OrganiserThumbnail.png in Resources */,
 				BD11C230148AB30B002F35C6 /* BACK-OrganiserThumbnail@2x.png in Resources */,
 				BD11C231148AB30B002F35C6 /* BACK-RowSocials.png in Resources */,
@@ -410,14 +406,6 @@
 				876C6953148A6374000ECF1C /* en */,
 			);
 			name = GOMasterViewController.xib;
-			sourceTree = "<group>";
-		};
-		876C6955148A6374000ECF1C /* GODetailViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				876C6956148A6374000ECF1C /* en */,
-			);
-			name = GODetailViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

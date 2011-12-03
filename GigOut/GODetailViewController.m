@@ -9,6 +9,9 @@
 #import "GODetailViewController.h"
 #import "GOGigDetailTableViewCell.h"
 #import "GOGigVideoInfo.h"
+#import "GOGig.h"
+#import "GOAppDelegate.h"
+#import "PSLog.h"
 
 @interface GODetailViewController ()
 
@@ -34,7 +37,6 @@
     self.artistImage = nil;
     self.detailDescriptionLabel = nil;
     self.videoTableView = nil;
-    [super dealloc];
 }
 
 - (id)initWithGOGig:(GOGig *)_gigEvent
