@@ -1,0 +1,297 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		876C693B148A6373000ECF1C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 876C693A148A6373000ECF1C /* UIKit.framework */; };
+		876C693D148A6373000ECF1C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 876C693C148A6373000ECF1C /* Foundation.framework */; };
+		876C693F148A6373000ECF1C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 876C693E148A6373000ECF1C /* CoreGraphics.framework */; };
+		876C6945148A6373000ECF1C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 876C6943148A6373000ECF1C /* InfoPlist.strings */; };
+		876C6947148A6373000ECF1C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 876C6946148A6373000ECF1C /* main.m */; };
+		876C694B148A6373000ECF1C /* GOAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 876C694A148A6373000ECF1C /* GOAppDelegate.m */; };
+		876C694E148A6373000ECF1C /* GOMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 876C694D148A6373000ECF1C /* GOMasterViewController.m */; };
+		876C6951148A6373000ECF1C /* GODetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 876C6950148A6373000ECF1C /* GODetailViewController.m */; };
+		876C6954148A6374000ECF1C /* GOMasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 876C6952148A6373000ECF1C /* GOMasterViewController.xib */; };
+		876C6957148A6374000ECF1C /* GODetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 876C6955148A6374000ECF1C /* GODetailViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		876C6936148A6373000ECF1C /* GigOut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GigOut.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		876C693A148A6373000ECF1C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		876C693C148A6373000ECF1C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		876C693E148A6373000ECF1C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		876C6942148A6373000ECF1C /* GigOut-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GigOut-Info.plist"; sourceTree = "<group>"; };
+		876C6944148A6373000ECF1C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		876C6946148A6373000ECF1C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		876C6948148A6373000ECF1C /* GigOut-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GigOut-Prefix.pch"; sourceTree = "<group>"; };
+		876C6949148A6373000ECF1C /* GOAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GOAppDelegate.h; sourceTree = "<group>"; };
+		876C694A148A6373000ECF1C /* GOAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GOAppDelegate.m; sourceTree = "<group>"; };
+		876C694C148A6373000ECF1C /* GOMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GOMasterViewController.h; sourceTree = "<group>"; };
+		876C694D148A6373000ECF1C /* GOMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GOMasterViewController.m; sourceTree = "<group>"; };
+		876C694F148A6373000ECF1C /* GODetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GODetailViewController.h; sourceTree = "<group>"; };
+		876C6950148A6373000ECF1C /* GODetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GODetailViewController.m; sourceTree = "<group>"; };
+		876C6953148A6374000ECF1C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/GOMasterViewController.xib; sourceTree = "<group>"; };
+		876C6956148A6374000ECF1C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/GODetailViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		876C6933148A6373000ECF1C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				876C693B148A6373000ECF1C /* UIKit.framework in Frameworks */,
+				876C693D148A6373000ECF1C /* Foundation.framework in Frameworks */,
+				876C693F148A6373000ECF1C /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		876C692B148A6373000ECF1C = {
+			isa = PBXGroup;
+			children = (
+				876C6940148A6373000ECF1C /* GigOut */,
+				876C6939148A6373000ECF1C /* Frameworks */,
+				876C6937148A6373000ECF1C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		876C6937148A6373000ECF1C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				876C6936148A6373000ECF1C /* GigOut.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		876C6939148A6373000ECF1C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				876C693A148A6373000ECF1C /* UIKit.framework */,
+				876C693C148A6373000ECF1C /* Foundation.framework */,
+				876C693E148A6373000ECF1C /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		876C6940148A6373000ECF1C /* GigOut */ = {
+			isa = PBXGroup;
+			children = (
+				876C6949148A6373000ECF1C /* GOAppDelegate.h */,
+				876C694A148A6373000ECF1C /* GOAppDelegate.m */,
+				876C694C148A6373000ECF1C /* GOMasterViewController.h */,
+				876C694D148A6373000ECF1C /* GOMasterViewController.m */,
+				876C694F148A6373000ECF1C /* GODetailViewController.h */,
+				876C6950148A6373000ECF1C /* GODetailViewController.m */,
+				876C6952148A6373000ECF1C /* GOMasterViewController.xib */,
+				876C6955148A6374000ECF1C /* GODetailViewController.xib */,
+				876C6941148A6373000ECF1C /* Supporting Files */,
+			);
+			path = GigOut;
+			sourceTree = "<group>";
+		};
+		876C6941148A6373000ECF1C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				876C6942148A6373000ECF1C /* GigOut-Info.plist */,
+				876C6943148A6373000ECF1C /* InfoPlist.strings */,
+				876C6946148A6373000ECF1C /* main.m */,
+				876C6948148A6373000ECF1C /* GigOut-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		876C6935148A6373000ECF1C /* GigOut */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 876C695A148A6374000ECF1C /* Build configuration list for PBXNativeTarget "GigOut" */;
+			buildPhases = (
+				876C6932148A6373000ECF1C /* Sources */,
+				876C6933148A6373000ECF1C /* Frameworks */,
+				876C6934148A6373000ECF1C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GigOut;
+			productName = GigOut;
+			productReference = 876C6936148A6373000ECF1C /* GigOut.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		876C692D148A6373000ECF1C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 876C6930148A6373000ECF1C /* Build configuration list for PBXProject "GigOut" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 876C692B148A6373000ECF1C;
+			productRefGroup = 876C6937148A6373000ECF1C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				876C6935148A6373000ECF1C /* GigOut */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		876C6934148A6373000ECF1C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				876C6945148A6373000ECF1C /* InfoPlist.strings in Resources */,
+				876C6954148A6374000ECF1C /* GOMasterViewController.xib in Resources */,
+				876C6957148A6374000ECF1C /* GODetailViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		876C6932148A6373000ECF1C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				876C6947148A6373000ECF1C /* main.m in Sources */,
+				876C694B148A6373000ECF1C /* GOAppDelegate.m in Sources */,
+				876C694E148A6373000ECF1C /* GOMasterViewController.m in Sources */,
+				876C6951148A6373000ECF1C /* GODetailViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		876C6943148A6373000ECF1C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				876C6944148A6373000ECF1C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		876C6952148A6373000ECF1C /* GOMasterViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				876C6953148A6374000ECF1C /* en */,
+			);
+			name = GOMasterViewController.xib;
+			sourceTree = "<group>";
+		};
+		876C6955148A6374000ECF1C /* GODetailViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				876C6956148A6374000ECF1C /* en */,
+			);
+			name = GODetailViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		876C6958148A6374000ECF1C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		876C6959148A6374000ECF1C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		876C695B148A6374000ECF1C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GigOut/GigOut-Prefix.pch";
+				INFOPLIST_FILE = "GigOut/GigOut-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		876C695C148A6374000ECF1C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GigOut/GigOut-Prefix.pch";
+				INFOPLIST_FILE = "GigOut/GigOut-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		876C6930148A6373000ECF1C /* Build configuration list for PBXProject "GigOut" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				876C6958148A6374000ECF1C /* Debug */,
+				876C6959148A6374000ECF1C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		876C695A148A6374000ECF1C /* Build configuration list for PBXNativeTarget "GigOut" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				876C695B148A6374000ECF1C /* Debug */,
+				876C695C148A6374000ECF1C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 876C692D148A6373000ECF1C /* Project object */;
+}
