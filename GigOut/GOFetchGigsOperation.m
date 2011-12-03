@@ -72,72 +72,61 @@
             NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&jsonError];
             
             //check to see if we have been cancelled
-            if (![self isCancelled])
-            {
-                if (dictionary) {
-                    
-                    NSArray *events = [[dictionary objectForKey:@"events"] objectForKey:@"event"];
-                    if (events) {
-                        for (NSDictionary *event in events)
-                        {
-                            NSLog(@"The events values are %@", event);
-                            GOGig *gig = [[GOGig alloc] init];
-                            gig.gigName = [event objectForKey:@"title"];
-                            
-                            NSDictionary *artists = [event objectForKey:@"artists"];
-                            
-                            
-                            gig.artistName = [artists objectForKey:@"headliner"];                            
-                           
-                            NSDictionary *venue = [event objectForKey:@"venue"];
-                            
-                            gig.venueId = [venue objectForKey:@"id"]; 
-                            gig.venueName = [venue objectForKey:@"name"];
-                            
-                            
-                            NSDictionary *location = [venue objectForKey:@"location"];
-                            NSDictionary *geopoint = [location objectForKey:@"geo:point"];
-                            
-                            gig.venueLat = [geopoint objectForKey:@"geo:lat"];
-                            gig.venueLng = [geopoint objectForKey:@"geo:long"];
-                            
-                            gig.venueCity = [location objectForKey:@"city"];
-                            gig.venueCountry = [location objectForKey:@"country"];
-                            gig.venueStreet = [location objectForKey:@"street"];
-                            gig.venueZip = [location objectForKey:@"postalcode"];
-                            gig.venueUrl = [venue objectForKey:@"website"];
-                            gig.venuePhone = [venue objectForKey:@"phonenumber"];
-                            gig.description = [event objectForKey:@"description"];
-                            NSArray *imgArray = [event objectForKey:@"image"];
-                            for (NSDictionary *imgJSON in imgArray) {
-                                if ([[imgJSON valueForKey:@"size"] isEqualToString:@"medium"]) {
-                                        gig.artistImgUrl = [imgJSON valueForKey:@"#text"];
-                                    }
-                            }
-                            gig.startDate = [event objectForKey:@"startDate"];
-
-                            
-                            [gigs addObject:gig];
-                            
-                            
-                            PSLogDebug(@"gig name = %@", gig.gigName);
+            if (![self isCancelled] && dictionary != nil)
+            {                    
+                NSArray *events = [[dictionary objectForKey:@"events"] objectForKey:@"event"];
+                if (events) {
+                    for (NSDictionary *event in events)
+                    {
+                        NSLog(@"The events values are %@", event);
+                        GOGig *gig = [[GOGig alloc] init];
+                        gig.gigName = [event objectForKey:@"title"];
+                        
+                        NSDictionary *artists = [event objectForKey:@"artists"];
+                        
+                        
+                        gig.artistName = [artists objectForKey:@"headliner"];                            
+                       
+                        NSDictionary *venue = [event objectForKey:@"venue"];
+                        
+                        gig.venueId = [venue objectForKey:@"id"]; 
+                        gig.venueName = [venue objectForKey:@"name"];
+                        
+                        
+                        NSDictionary *location = [venue objectForKey:@"location"];
+                        NSDictionary *geopoint = [location objectForKey:@"geo:point"];
+                        
+                        gig.venueLat = [geopoint objectForKey:@"geo:lat"];
+                        gig.venueLng = [geopoint objectForKey:@"geo:long"];
+                        
+                        gig.venueCity = [location objectForKey:@"city"];
+                        gig.venueCountry = [location objectForKey:@"country"];
+                        gig.venueStreet = [location objectForKey:@"street"];
+                        gig.venueZip = [location objectForKey:@"postalcode"];
+                        gig.venueUrl = [venue objectForKey:@"website"];
+                        gig.venuePhone = [venue objectForKey:@"phonenumber"];
+                        gig.description = [event objectForKey:@"description"];
+                        
+                        NSArray *imgArray = [event objectForKey:@"image"];
+                        for (NSDictionary *imgJSON in imgArray) {
+                            if ([[imgJSON valueForKey:@"size"] isEqualToString:@"medium"]) {
+                                    gig.artistImgUrl = [imgJSON valueForKey:@"#text"];
+                                }
                         }
-                    }
-                    
+                        gig.startDate = [event objectForKey:@"startDate"];
+                        
+                        [gigs addObject:gig];
+                    }                    
                 }
             }
          
-            
             if (delegate != nil &&
                 [delegate respondsToSelector:@selector(fetchRequestDidFinishWithArray:)]){
                 [delegate fetchRequestDidFinishWithArray:gigs];
             }
             
             [gigs release];
-
-        
         }  
-        
     }
     @catch (NSException *e) {
         PSLogException(@"%@", e);

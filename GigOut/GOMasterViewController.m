@@ -47,7 +47,9 @@
         self.activityIndicator = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray] autorelease];
         activityIndicator.frame = CGRectMake(140, 180, 40, 40);
         [self.view addSubview:activityIndicator];
+        
         self.tableView.rowHeight = 84;
+        
         [[LocationManager sharedLocationManager] setDelegate:self];
         [[LocationManager sharedLocationManager] startUpdates];
     }
@@ -81,6 +83,9 @@
     operation.delegate = self;
     [[self operationQueue] addOperation: operation];
     
+    if (activityIndicator != nil) {
+        [activityIndicator startAnimating];
+    }
 }
 
 // Customize the number of sections in the table view.
@@ -214,9 +219,6 @@
     
     [super viewWillAppear:animated];
     
-    if (activityIndicator != nil) {
-        [activityIndicator startAnimating];
-    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
