@@ -19,7 +19,7 @@
 
 #pragma mark - Initialization
 
-- (id) initiWithLocation: (CLLocation *)location
+- (id)initWithLocation:(CLLocation *)location
 {
     self = [self init];
     if (self)
@@ -60,10 +60,10 @@
             NSMutableArray *gigs = [[NSMutableArray alloc] init];
             NSString *apiKey = @"b25b959554ed76058ac220b7b2e0a026";
             //NSUInteger count = kMaxResults;
-            NSUInteger radius = kSearchRadiusKms;
+            //NSUInteger radius = kSearchRadiusKms;
             NSString *fetchUrlString = [NSString stringWithFormat:@"http://ws.audioscrobbler.com/2.0/?method=geo.getevents&lat=%@&lng=%@&format=json&api_key=%@",
                                         @"51.549751017014245",
-                                        @"-1.494140625",                                        apiKey];
+                                        @"-1.494140625", apiKey];
             NSURL *fetchUrl = [NSURL URLWithString: fetchUrlString];
             NSStringEncoding encoding;
             
@@ -74,19 +74,16 @@
             NSError *jsonError = nil;
             NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&jsonError];
             
-      
-    
             //check to see if we have been cancelled
             if (![self isCancelled])
             {
                 if (dictionary) {
                     
-                    NSDictionary *events = [dictionary objectForKey:@"events"];
+                    NSArray *events = [[dictionary objectForKey:@"events"] objectForKey:@"event"];
                     if (events) {
-                        
-                        for (NSDictionary *thisEvent in events)
+                        for (NSDictionary *event in events)
                         {
-                            NSDictionary *event = [thisEvent objectForKey:@"event"];
+                            NSLog(@"The events values are %@", event);
                             GOGig *gig = [[GOGig alloc] init];
                             gig.gigName = [event objectForKey:@"title"];
                             
@@ -95,7 +92,7 @@
                             
                             gig.artistName = [artists objectForKey:@"headliner"];                            
                            
-                            NSDictionary *venue = [thisEvent objectForKey:@"venue"];
+                            NSDictionary *venue = [event objectForKey:@"venue"];
                             
                             gig.venueId = [venue objectForKey:@"id"]; 
                             gig.venueName = [venue objectForKey:@"name"];
@@ -121,8 +118,6 @@
                             
                             
                             PSLogDebug(@"gig name = %@", gig.gigName);
-                            
-                            
                         }
                     }
                     

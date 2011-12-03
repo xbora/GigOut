@@ -13,12 +13,13 @@
 
 @synthesize window = _window;
 @synthesize navigationController = _navigationController;
+@synthesize gigs = gigs_;
 
 - (void)dealloc
 {
     [_window release];
+    [gigs_ release];
     [_navigationController release];
-    
     
     [super dealloc];
 }

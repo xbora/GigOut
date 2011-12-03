@@ -19,10 +19,8 @@
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (retain) NSMutableArray *gigs;
+@property (nonatomic, retain) NSMutableArray *gigs;
 
 @property (strong, nonatomic) UINavigationController *navigationController;
-
-- (void)gigsDidUpdate: (NSNotification *) notification;
 
 @end

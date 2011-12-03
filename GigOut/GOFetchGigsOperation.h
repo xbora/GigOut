@@ -24,6 +24,6 @@
 @property (nonatomic, retain) CLLocation *location;
 @property (nonatomic, assign) id <GOFetchGigsOperationDelegate> delegate;
 
-- (id) initWithLocation: (CLLocation *)location;
+- (id)initWithLocation:(CLLocation *)location;
 
 @end
