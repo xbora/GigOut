@@ -20,7 +20,31 @@
 		876C6969148A671F000ECF1C /* GOFetchGigsOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 876C6968148A671F000ECF1C /* GOFetchGigsOperation.m */; };
 		876C696B148A6869000ECF1C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 876C696A148A6869000ECF1C /* CoreLocation.framework */; };
 		876C6970148A7A2A000ECF1C /* GOGig.m in Sources */ = {isa = PBXBuildFile; fileRef = 876C696F148A7A2A000ECF1C /* GOGig.m */; };
+		BD5E18D4148A768800C372A0 /* GOMasterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5E18CC148A768800C372A0 /* GOMasterTableViewCell.m */; };
+		BD5E18D5148A768800C372A0 /* ULImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5E18CE148A768800C372A0 /* ULImageView.m */; };
+		BD5E18D6148A768800C372A0 /* ULCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5E18D1148A768800C372A0 /* ULCacheManager.m */; };
+		BD5E18D7148A768800C372A0 /* URLCacheConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5E18D3148A768800C372A0 /* URLCacheConnection.m */; };
+		BD5E18F0148A79B100C372A0 /* DateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5E18EF148A79B100C372A0 /* DateUtils.m */; };
+		BD5E18F3148A7ED200C372A0 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5E18F2148A7ED200C372A0 /* LocationManager.m */; };
+		BD8C6465148A6E8500D39132 /* libUberLifeLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD8C6456148A6E1A00D39132 /* libUberLifeLib.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BD8C6455148A6E1A00D39132 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BD8C6450148A6E1A00D39132 /* UberLifeLib.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 31F274F21455C2D300BF57D8;
+			remoteInfo = UberLifeLib;
+		};
+		BD8C6457148A6E1A00D39132 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BD8C6450148A6E1A00D39132 /* UberLifeLib.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 31F275021455C2D300BF57D8;
+			remoteInfo = UberLifeLibTests;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		876C6936148A6373000ECF1C /* GigOut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GigOut.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +69,20 @@
 		876C696C148A6DC1000ECF1C /* PSLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSLog.h; sourceTree = "<group>"; };
 		876C696E148A7A2A000ECF1C /* GOGig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GOGig.h; sourceTree = "<group>"; };
 		876C696F148A7A2A000ECF1C /* GOGig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOGig.m; sourceTree = "<group>"; };
+		BD5E18CB148A768800C372A0 /* GOMasterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GOMasterTableViewCell.h; sourceTree = "<group>"; };
+		BD5E18CC148A768800C372A0 /* GOMasterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOMasterTableViewCell.m; sourceTree = "<group>"; };
+		BD5E18CD148A768800C372A0 /* ULImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ULImageView.h; sourceTree = "<group>"; };
+		BD5E18CE148A768800C372A0 /* ULImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ULImageView.m; sourceTree = "<group>"; };
+		BD5E18D0148A768800C372A0 /* ULCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ULCacheManager.h; sourceTree = "<group>"; };
+		BD5E18D1148A768800C372A0 /* ULCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ULCacheManager.m; sourceTree = "<group>"; };
+		BD5E18D2148A768800C372A0 /* URLCacheConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLCacheConnection.h; sourceTree = "<group>"; };
+		BD5E18D3148A768800C372A0 /* URLCacheConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLCacheConnection.m; sourceTree = "<group>"; };
+		BD5E18EE148A79B100C372A0 /* DateUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateUtils.h; sourceTree = "<group>"; };
+		BD5E18EF148A79B100C372A0 /* DateUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateUtils.m; sourceTree = "<group>"; };
+		BD5E18F1148A7ED200C372A0 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
+		BD5E18F2148A7ED200C372A0 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
+		BD5E18F5148A7FCE00C372A0 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
+		BD8C6450148A6E1A00D39132 /* UberLifeLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = UberLifeLib.xcodeproj; path = ../UberLifeLib/UberLifeLib.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD8C6465148A6E8500D39132 /* libUberLifeLib.a in Frameworks */,
 				876C696B148A6869000ECF1C /* CoreLocation.framework in Frameworks */,
 				876C693B148A6373000ECF1C /* UIKit.framework in Frameworks */,
 				876C693D148A6373000ECF1C /* Foundation.framework in Frameworks */,
@@ -65,6 +104,7 @@
 		876C692B148A6373000ECF1C = {
 			isa = PBXGroup;
 			children = (
+				BD8C6450148A6E1A00D39132 /* UberLifeLib.xcodeproj */,
 				876C6940148A6373000ECF1C /* GigOut */,
 				876C6939148A6373000ECF1C /* Frameworks */,
 				876C6937148A6373000ECF1C /* Products */,
@@ -93,6 +133,9 @@
 		876C6940148A6373000ECF1C /* GigOut */ = {
 			isa = PBXGroup;
 			children = (
+				BD5E18CA148A768800C372A0 /* Comoponents */,
+				BD5E18CF148A768800C372A0 /* Utils */,
+				BD5E15D9148A751700C372A0 /* Resources */,
 				876C696D148A7A09000ECF1C /* Model */,
 				876C6965148A66F2000ECF1C /* Operations */,
 				876C6949148A6373000ECF1C /* GOAppDelegate.h */,
@@ -138,6 +181,49 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		BD5E15D9148A751700C372A0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		BD5E18CA148A768800C372A0 /* Comoponents */ = {
+			isa = PBXGroup;
+			children = (
+				BD5E18CB148A768800C372A0 /* GOMasterTableViewCell.h */,
+				BD5E18CC148A768800C372A0 /* GOMasterTableViewCell.m */,
+				BD5E18CD148A768800C372A0 /* ULImageView.h */,
+				BD5E18CE148A768800C372A0 /* ULImageView.m */,
+			);
+			path = Comoponents;
+			sourceTree = "<group>";
+		};
+		BD5E18CF148A768800C372A0 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				BD5E18F5148A7FCE00C372A0 /* Singleton.h */,
+				BD5E18F1148A7ED200C372A0 /* LocationManager.h */,
+				BD5E18F2148A7ED200C372A0 /* LocationManager.m */,
+				BD5E18EE148A79B100C372A0 /* DateUtils.h */,
+				BD5E18EF148A79B100C372A0 /* DateUtils.m */,
+				BD5E18D0148A768800C372A0 /* ULCacheManager.h */,
+				BD5E18D1148A768800C372A0 /* ULCacheManager.m */,
+				BD5E18D2148A768800C372A0 /* URLCacheConnection.h */,
+				BD5E18D3148A768800C372A0 /* URLCacheConnection.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		BD8C6451148A6E1A00D39132 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BD8C6456148A6E1A00D39132 /* libUberLifeLib.a */,
+				BD8C6458148A6E1A00D39132 /* UberLifeLibTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -176,12 +262,35 @@
 			mainGroup = 876C692B148A6373000ECF1C;
 			productRefGroup = 876C6937148A6373000ECF1C /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = BD8C6451148A6E1A00D39132 /* Products */;
+					ProjectRef = BD8C6450148A6E1A00D39132 /* UberLifeLib.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				876C6935148A6373000ECF1C /* GigOut */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		BD8C6456148A6E1A00D39132 /* libUberLifeLib.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libUberLifeLib.a;
+			remoteRef = BD8C6455148A6E1A00D39132 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BD8C6458148A6E1A00D39132 /* UberLifeLibTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = UberLifeLibTests.octest;
+			remoteRef = BD8C6457148A6E1A00D39132 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		876C6934148A6373000ECF1C /* Resources */ = {
@@ -205,7 +314,13 @@
 				876C694B148A6373000ECF1C /* GOAppDelegate.m in Sources */,
 				876C694E148A6373000ECF1C /* GOMasterViewController.m in Sources */,
 				876C6951148A6373000ECF1C /* GODetailViewController.m in Sources */,
+				BD5E18D4148A768800C372A0 /* GOMasterTableViewCell.m in Sources */,
+				BD5E18D5148A768800C372A0 /* ULImageView.m in Sources */,
+				BD5E18D6148A768800C372A0 /* ULCacheManager.m in Sources */,
+				BD5E18D7148A768800C372A0 /* URLCacheConnection.m in Sources */,
 				876C6969148A671F000ECF1C /* GOFetchGigsOperation.m in Sources */,
+				BD5E18F0148A79B100C372A0 /* DateUtils.m in Sources */,
+				BD5E18F3148A7ED200C372A0 /* LocationManager.m in Sources */,
 				876C6970148A7A2A000ECF1C /* GOGig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

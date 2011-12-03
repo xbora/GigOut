@@ -10,10 +10,11 @@
 
 @class GODetailViewController;
 
-
 @interface GOMasterViewController : UITableViewController
 {
-  NSOperationQueue *operationQueue_;  
+    NSOperationQueue *operationQueue_;  
+    UIActivityIndicatorView *activityIndicator;
+    NSArray *gigsArray;
 }
 
 

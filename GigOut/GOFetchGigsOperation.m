@@ -14,14 +14,26 @@
 
 @implementation GOFetchGigsOperation
 
+@synthesize location = location_;
+
 #pragma mark - Initialization
 
 - (id) initiWithLocation: (CLLocation *)location
 {
-    self = [super init];
+    self = [self init];
     if (self)
     {
         location_ = [location copy];
+    }
+    return self;
+}
+
+- (id) init
+{
+    self = [super init];
+    if (self)
+    {
+        
     }
     return self;
 }
@@ -39,9 +51,7 @@
 - (void)main
 {
     
-    @try {
-        NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-        
+    @try {        
         //check to see if we have been cancelled.
         if (![self isCancelled])
         {

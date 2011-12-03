@@ -13,7 +13,8 @@
     CLLocation *location_;
 }
 
-- (id) initWithLocation: (CLLocation *)location;
+@property (nonatomic, retain) CLLocation *location;
 
+- (id) initWithLocation: (CLLocation *)location;
 
 @end

@@ -8,22 +8,29 @@
 
 #import "GOMasterViewController.h"
 #import "GODetailViewController.h"
+#import "GOMasterTableViewCell.h"
+#import "ULImageView.h"
+#import "DateUtils.h"
+#import "LocationManager.h"
+#import "GOGig.h"
 #import "GOFetchGigsOperation.h"
+
+#import <CoreLocation/CoreLocation.h>
+
+@interface GOMasterViewController ()
+
+@property (nonatomic, retain) UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, retain) NSArray *gigsArray;
+
+@end
 
 @implementation GOMasterViewController
 
 @synthesize detailViewController = _detailViewController;
+@synthesize activityIndicator;
+@synthesize gigsArray;
 @synthesize operationQueue = operationQueue_;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        self.title = NSLocalizedString(@"Master", @"Master");
-    }
-    return self;
-}
-							
 - (void)dealloc
 {
     [_detailViewController release];
@@ -31,12 +38,21 @@
     [super dealloc];
 }
 
-- (void)didReceiveMemoryWarning
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    [super didReceiveMemoryWarning];
-    // Release any cached data, images, etc that aren't in use.
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self.title = NSLocalizedString(@"Gigs Around you",nil);
+        
+        self.activityIndicator = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge] autorelease];
+        activityIndicator.frame = CGRectMake(140, 240, 40, 40);
+        [self.view addSubview:activityIndicator];
+    }
+    return self;
 }
 
+#pragma mark -
+#pragma mark UITableViewDelegate
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -63,32 +79,6 @@
     
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-	[super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-	[super viewDidDisappear:animated];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-}
-
 // Customize the number of sections in the table view.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -105,54 +95,84 @@
 {
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    GOMasterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[GOMasterTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
 
-    // Configure the cell.
-    cell.textLabel.text = NSLocalizedString(@"Detail", @"Detail");
+    UIImageView* lineView = (UIImageView*)[cell.contentView viewWithTag:LINE_TAG];
+    
+    UIImage* lineImage;
+    if (indexPath.row == 0)
+    {
+        lineImage = [[UIImage imageNamed:@"BACK-RowSocialsNoLine.png"] stretchableImageWithLeftCapWidth:15 topCapHeight:0];
+        lineView.image = lineImage;
+        CGRect frame = lineView.frame;
+        frame.size.height = 83;
+        lineView.frame = frame;
+    } else {
+        lineImage = [[UIImage imageNamed:@"BACK-RowSocials.png"] stretchableImageWithLeftCapWidth:15 topCapHeight:0];
+        lineView.image = lineImage;
+        CGRect frame = lineView.frame;
+        frame.size.height = 84;
+        lineView.frame = frame;
+    }
+    
+    GOGig* gigEvent = (GOGig*)[self.gigsArray objectAtIndex:indexPath.row];
+    
+    if(gigEvent) {
+        ULImageView* imageView = (ULImageView*)[cell.contentView viewWithTag:IMAGE_TAG];
+        NSString* eventImageUrlString = gigEvent.venueImgUrl;
+        imageView.urlStr = eventImageUrlString;
+        
+        UILabel* titleLabel = (UILabel*)[cell.contentView viewWithTag:TITLE_TAG];
+        NSString *capitalize = gigEvent.artistName;
+        capitalize = [NSString stringWithFormat:@"%@%@",[[capitalize substringToIndex:1] uppercaseString],[capitalize substringFromIndex:1] ];       
+        titleLabel.text = capitalize;
+        
+        UILabel* dateLabel =  (UILabel*)[cell.contentView viewWithTag:DATE_TAG];
+        
+        if(gigEvent.startDate) {
+            NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+            [formatter setDateFormat:@"EEEE, d MMM yyyy hh:mm aaa"];
+            NSString *theString = [formatter stringFromDate:gigEvent.startDate];
+            NSString *capitalize = theString;
+            capitalize = [NSString stringWithFormat:@"%@%@",[[capitalize substringToIndex:1] uppercaseString],[capitalize substringFromIndex:1] ];       
+            dateLabel.text = capitalize;
+        } else {
+            dateLabel.text = @"";
+        }
+        
+        UILabel* distanceLabel = (UILabel*)[cell.contentView viewWithTag:DISTANCE_TAG];
+        UILabel* venueLabel = (UILabel*)[cell.contentView viewWithTag:VENUE_TAG];        
+        venueLabel.text = gigEvent.venueName;
+        CLLocation* locationCoords = [[CLLocation alloc] initWithLatitude:[gigEvent.venueLat floatValue]
+                                                                longitude:[gigEvent.venueLng floatValue]];
+        CLLocation* currentLoc = [[LocationManager sharedLocationManager] currentLocation];
+        float distance = [currentLoc distanceFromLocation:locationCoords] * 0.000621371192;
+        
+        // Make the distance different once it is more then 10 miles away.
+        NSString *numberformatter = [NSString stringWithFormat:@"%0.1f", distance];
+        float floattest = [numberformatter floatValue];
+        if(floattest > 9.9){
+            distanceLabel.text = [NSString stringWithFormat:@"%0.0f", distance];
+        }
+        else{
+            distanceLabel.text = [NSString stringWithFormat:@"%0.1f", distance];
+        }
+        
+        [locationCoords release];
+        
+//        NSArray* rsvps = [gigEvent objectForKey:@"rsvps"];
+//        int count = [rsvps count];
+//        UIImageView* circle = (UIImageView*)[cell.contentView viewWithTag:RSVP_DOT];
+//        UILabel* number = (UILabel*)[[circle subviews] objectAtIndex:0];
+//        number.text = [NSString stringWithFormat:@"%d", count];
+        }
+    
     return cell;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source.
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -160,6 +180,35 @@
         self.detailViewController = [[[GODetailViewController alloc] initWithNibName:@"GODetailViewController" bundle:nil] autorelease];
     }
     [self.navigationController pushViewController:self.detailViewController animated:YES];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Release any cached data, images, etc that aren't in use.
+}
+
+#pragma mark - View lifecycle
+
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+    if (activityIndicator != nil) {
+        [activityIndicator startAnimating];
+    }
+    
+    // Retrieve the information to show into the tableView
+    self.gigsArray = [NSArray array];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    
+    [super viewWillDisappear:animated];
+    
+    if (activityIndicator != nil && [activityIndicator isAnimating]) {
+        [activityIndicator stopAnimating];
+    }
 }
 
 @end
