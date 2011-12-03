@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import "GOGigVideoInfo.h"
 
 @interface GOGig : NSObject {
     NSString *gigName_;
@@ -25,6 +26,8 @@
     NSString *venuePhone_;
     NSString *startDate_;
     NSString *description_;
+    
+    NSMutableArray *videoArray_; // A GOGigVideoInfo array
 }
 
 @property (nonatomic, copy) NSString *gigName;
@@ -40,7 +43,9 @@
 @property (nonatomic, copy) NSString *venueUrl;
 @property (nonatomic, copy) NSString *artistImgUrl;
 @property (nonatomic, copy) NSString *venuePhone;
-@property (nonatomic, retain) NSString *startDate;
 @property (nonatomic, copy) NSString *description;
+@property (nonatomic, retain) NSString *startDate;
+@property (nonatomic, retain) NSMutableArray *videoArray;
+
 
 @end

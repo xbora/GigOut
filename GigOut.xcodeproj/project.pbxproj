@@ -32,6 +32,8 @@
 		BD11C238148AB30B002F35C6 /* Distance.png in Resources */ = {isa = PBXBuildFile; fileRef = BD11C22C148AB30B002F35C6 /* Distance.png */; };
 		BD11C239148AB30B002F35C6 /* Distance@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD11C22D148AB30B002F35C6 /* Distance@2x.png */; };
 		BD11C23A148AB30B002F35C6 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = BD11C22E148AB30B002F35C6 /* placeholder.png */; };
+		BD11C31D148AD4B1002F35C6 /* GOGigDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD11C31C148AD4B0002F35C6 /* GOGigDetailTableViewCell.m */; };
+		BD11C320148AD602002F35C6 /* GOGigVideoInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BD11C31F148AD602002F35C6 /* GOGigVideoInfo.m */; };
 		BD5E18D4148A768800C372A0 /* GOMasterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5E18CC148A768800C372A0 /* GOMasterTableViewCell.m */; };
 		BD5E18D5148A768800C372A0 /* ULImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5E18CE148A768800C372A0 /* ULImageView.m */; };
 		BD5E18D6148A768800C372A0 /* ULCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5E18D1148A768800C372A0 /* ULCacheManager.m */; };
@@ -78,7 +80,7 @@
 		876C6967148A671F000ECF1C /* GOFetchGigsOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GOFetchGigsOperation.h; sourceTree = "<group>"; };
 		876C6968148A671F000ECF1C /* GOFetchGigsOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOFetchGigsOperation.m; sourceTree = "<group>"; };
 		876C696A148A6869000ECF1C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		876C696C148A6DC1000ECF1C /* PSLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSLog.h; sourceTree = "<group>"; };
+		876C696C148A6DC1000ECF1C /* PSLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PSLog.h; path = ../PSLog.h; sourceTree = "<group>"; };
 		876C696E148A7A2A000ECF1C /* GOGig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GOGig.h; sourceTree = "<group>"; };
 		876C696F148A7A2A000ECF1C /* GOGig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOGig.m; sourceTree = "<group>"; };
 		BD11C223148AB30B002F35C6 /* BACK-OrganiserThumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BACK-OrganiserThumbnail.png"; sourceTree = "<group>"; };
@@ -93,6 +95,10 @@
 		BD11C22C148AB30B002F35C6 /* Distance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Distance.png; sourceTree = "<group>"; };
 		BD11C22D148AB30B002F35C6 /* Distance@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Distance@2x.png"; sourceTree = "<group>"; };
 		BD11C22E148AB30B002F35C6 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
+		BD11C31B148AD4B0002F35C6 /* GOGigDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GOGigDetailTableViewCell.h; sourceTree = "<group>"; };
+		BD11C31C148AD4B0002F35C6 /* GOGigDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOGigDetailTableViewCell.m; sourceTree = "<group>"; };
+		BD11C31E148AD602002F35C6 /* GOGigVideoInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GOGigVideoInfo.h; sourceTree = "<group>"; };
+		BD11C31F148AD602002F35C6 /* GOGigVideoInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOGigVideoInfo.m; sourceTree = "<group>"; };
 		BD5E18CB148A768800C372A0 /* GOMasterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GOMasterTableViewCell.h; sourceTree = "<group>"; };
 		BD5E18CC148A768800C372A0 /* GOMasterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOMasterTableViewCell.m; sourceTree = "<group>"; };
 		BD5E18CD148A768800C372A0 /* ULImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ULImageView.h; sourceTree = "<group>"; };
@@ -162,16 +168,14 @@
 				BD5E15D9148A751700C372A0 /* Resources */,
 				876C696D148A7A09000ECF1C /* Model */,
 				876C6965148A66F2000ECF1C /* Operations */,
-				876C6949148A6373000ECF1C /* GOAppDelegate.h */,
-				876C694A148A6373000ECF1C /* GOAppDelegate.m */,
 				876C694C148A6373000ECF1C /* GOMasterViewController.h */,
 				876C694D148A6373000ECF1C /* GOMasterViewController.m */,
 				876C694F148A6373000ECF1C /* GODetailViewController.h */,
 				876C6950148A6373000ECF1C /* GODetailViewController.m */,
-				876C6952148A6373000ECF1C /* GOMasterViewController.xib */,
-				876C6955148A6374000ECF1C /* GODetailViewController.xib */,
+				876C6949148A6373000ECF1C /* GOAppDelegate.h */,
+				876C694A148A6373000ECF1C /* GOAppDelegate.m */,
 				876C6941148A6373000ECF1C /* Supporting Files */,
-				876C696C148A6DC1000ECF1C /* PSLog.h */,
+				BD11C23B148ABE6C002F35C6 /* Xib */,
 			);
 			path = GigOut;
 			sourceTree = "<group>";
@@ -201,8 +205,19 @@
 			children = (
 				876C696E148A7A2A000ECF1C /* GOGig.h */,
 				876C696F148A7A2A000ECF1C /* GOGig.m */,
+				BD11C31E148AD602002F35C6 /* GOGigVideoInfo.h */,
+				BD11C31F148AD602002F35C6 /* GOGigVideoInfo.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		BD11C23B148ABE6C002F35C6 /* Xib */ = {
+			isa = PBXGroup;
+			children = (
+				876C6952148A6373000ECF1C /* GOMasterViewController.xib */,
+				876C6955148A6374000ECF1C /* GODetailViewController.xib */,
+			);
+			name = Xib;
 			sourceTree = "<group>";
 		};
 		BD5E15D9148A751700C372A0 /* Resources */ = {
@@ -227,6 +242,8 @@
 		BD5E18CA148A768800C372A0 /* Comoponents */ = {
 			isa = PBXGroup;
 			children = (
+				BD11C31B148AD4B0002F35C6 /* GOGigDetailTableViewCell.h */,
+				BD11C31C148AD4B0002F35C6 /* GOGigDetailTableViewCell.m */,
 				BD5E18CB148A768800C372A0 /* GOMasterTableViewCell.h */,
 				BD5E18CC148A768800C372A0 /* GOMasterTableViewCell.m */,
 				BD5E18CD148A768800C372A0 /* ULImageView.h */,
@@ -238,6 +255,7 @@
 		BD5E18CF148A768800C372A0 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				876C696C148A6DC1000ECF1C /* PSLog.h */,
 				BD5E18F5148A7FCE00C372A0 /* Singleton.h */,
 				BD5E18F1148A7ED200C372A0 /* LocationManager.h */,
 				BD5E18F2148A7ED200C372A0 /* LocationManager.m */,
@@ -370,6 +388,8 @@
 				BD5E18F0148A79B100C372A0 /* DateUtils.m in Sources */,
 				BD5E18F3148A7ED200C372A0 /* LocationManager.m in Sources */,
 				876C6970148A7A2A000ECF1C /* GOGig.m in Sources */,
+				BD11C31D148AD4B1002F35C6 /* GOGigDetailTableViewCell.m in Sources */,
+				BD11C320148AD602002F35C6 /* GOGigVideoInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -26,6 +26,7 @@
 @synthesize venuePhone = venuePhone_;
 @synthesize startDate = startDate_;
 @synthesize description = description_; 
+@synthesize videoArray  = videoArray_;
 
 #pragma mark - Class methods
 
@@ -44,8 +45,9 @@
     [venueZip_ release];
     [venueUrl_ release];
     [venuePhone_ release];
-    [startDate_ release];
+    [startDate_  release];
     [description_ release];
+    [videoArray_  release];
 	[super dealloc];
 }
 

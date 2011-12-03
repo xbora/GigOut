@@ -9,9 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-#define kSearchRadiusKms        (10)
-#define kMaxResults             (25)
-
 @interface GOAppDelegate : NSObject <UIApplicationDelegate, CLLocationManagerDelegate> {
     UIWindow *window_;
     NSMutableArray *gigs_;

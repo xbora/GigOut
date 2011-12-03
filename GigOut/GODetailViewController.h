@@ -7,12 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ULImageView.h"
 #import "GOGig.h"
 
-@interface GODetailViewController : UIViewController
+@interface GODetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>{
+    
+    ULImageView *artistImage;
+    UILabel     *detailDescriptionLabel;
+    UITableView *videoTableView;
+    
+    GOGig       *gigEvent;
+}
 
-@property (strong, nonatomic) id detailItem;
-
-@property (strong, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+- (id)initWithGOGig:(GOGig *)_gigEvent;
 
 @end

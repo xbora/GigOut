@@ -7,43 +7,118 @@
 //
 
 #import "GODetailViewController.h"
+#import "GOGigDetailTableViewCell.h"
+#import "GOGigVideoInfo.h"
 
 @interface GODetailViewController ()
-- (void)configureView;
+
+@property (nonatomic, retain) ULImageView *artistImage;
+@property (nonatomic, retain) UILabel     *detailDescriptionLabel;
+@property (nonatomic, retain) UITableView *videoTableView;
+@property (nonatomic, retain) GOGig       *gigEvent;
+
+- (void)retrieveGigVideos;
+
 @end
 
 @implementation GODetailViewController
 
-@synthesize detailItem = _detailItem;
-@synthesize detailDescriptionLabel = _detailDescriptionLabel;
+@synthesize artistImage;
+@synthesize detailDescriptionLabel;
+@synthesize videoTableView;
+@synthesize gigEvent;
 
 - (void)dealloc
 {
-    [_detailItem release];
-    [_detailDescriptionLabel release];
+    self.gigEvent = nil;
+    self.artistImage = nil;
+    self.detailDescriptionLabel = nil;
+    self.videoTableView = nil;
     [super dealloc];
 }
 
-#pragma mark - Managing the detail item
-
-- (void)setDetailItem:(id)newDetailItem
+- (id)initWithGOGig:(GOGig *)_gigEvent
 {
-    if (_detailItem != newDetailItem) {
-        [_detailItem release]; 
-        _detailItem = [newDetailItem retain]; 
+    self = [self init];
+    if (self) {
+        
+        self.gigEvent = [[[GOGig alloc] init] autorelease];
+        gigEvent = _gigEvent;
+        
+        self.title = gigEvent.artistName;
 
-        // Update the view.
-        [self configureView];
+    }
+    return self;
+}
+
+- (void)loadView{
+    [super loadView];
+    
+    self.artistImage = [[[ULImageView alloc] initWithFrame:CGRectMake(49., 20., 222., 140.)] autorelease];
+    artistImage.urlStr = gigEvent.artistImgUrl;
+    [self.view addSubview:artistImage];
+    
+    self.detailDescriptionLabel = [[[UILabel alloc] initWithFrame:CGRectMake(40., 173., 240, 81.)] autorelease];
+    detailDescriptionLabel.numberOfLines = 4;
+    detailDescriptionLabel.text = @"Bloody hell retrieve this info somewhere";
+    [self.view addSubview:detailDescriptionLabel];
+    
+    self.videoTableView = [[[UITableView alloc] initWithFrame:CGRectMake(0.0, 262., 320., 162.) style:UITableViewStyleGrouped] autorelease];
+    videoTableView.delegate = self;
+    videoTableView.dataSource = self;
+    videoTableView.backgroundColor = [UIColor clearColor];
+    videoTableView.rowHeight = 75.0;
+    [self.view addSubview:videoTableView]; 
+    
+    [self retrieveGigVideos];
+}
+
+#pragma mark
+#pragma mark UITableViewDelegate
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (gigEvent.videoArray) {
+        return [gigEvent.videoArray count];
+    }
+    else{
+        return 0;
     }
 }
 
-- (void)configureView
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Update the user interface for the detail item.
-
-    if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
+    static NSString *CellIdentifier = @"Cell";
+    
+    GOGigDetailTableViewCell *cell = (GOGigDetailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        NSString *videoUrl = [(GOGigVideoInfo *)[gigEvent.videoArray objectAtIndex:indexPath.row] videoStringUrl];
+        NSString *descriptionString = [(GOGigVideoInfo *)[gigEvent.videoArray objectAtIndex:indexPath.row] videoDescription];
+        
+        cell = [[[GOGigDetailTableViewCell alloc] initWithUrlString:videoUrl
+                                                 reuseIdentifier:CellIdentifier] autorelease];
+        cell.videoLabel.text = descriptionString;
     }
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+
+#pragma mark -
+#pragma mark UtilsFunct
+- (void)retrieveGigVideos{
+    
+    // Parse here the gigEvent.videoArray obJect and then reload the tableView
+    
+    [self.videoTableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,53 +129,11 @@
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    [self configureView];
-}
-
 - (void)viewDidUnload
 {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-	[super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-	[super viewDidDisappear:animated];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-}
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        self.title = NSLocalizedString(@"Detail", @"Detail");
-    }
-    return self;
 }
 							
 @end

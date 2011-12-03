@@ -43,28 +43,27 @@
         [self.contentView addSubview:imageView];
         [imageView release];
         
-        UIImageView* circle = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Counter.png"]];
-        circle.frame = CGRectMake(50, 50, 27, 27);
-        circle.tag = RSVP_DOT;
-        
-        UILabel* number = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 27, 27)];
-        number.backgroundColor = [UIColor clearColor];
-        number.textColor = [UIColor whiteColor];
-        number.textAlignment = UITextAlignmentCenter;
-        number.font = [UIFont boldSystemFontOfSize:13];
-        number.text = @"0";
-        number.shadowColor = [UIColor colorWithRed:0.88 green:0.24 blue:0.015 alpha:1.0f];
-        number.shadowOffset = CGSizeMake(0,-1);
-        number.numberOfLines = 1;
-        
-        [circle addSubview:number];
-        [number release];
-        
-        [self.contentView addSubview:circle];
-        [circle release];
-        
-        
-        //COUNTER-Orange.png
+        // No attending number required
+//        UIImageView* circle = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Counter.png"]];
+//        circle.frame = CGRectMake(50, 50, 27, 27);
+//        circle.tag = RSVP_DOT;
+//        
+//        UILabel* number = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 27, 27)];
+//        number.backgroundColor = [UIColor clearColor];
+//        number.textColor = [UIColor whiteColor];
+//        number.textAlignment = UITextAlignmentCenter;
+//        number.font = [UIFont boldSystemFontOfSize:13];
+//        number.text = @"0";
+//        number.shadowColor = [UIColor colorWithRed:0.88 green:0.24 blue:0.015 alpha:1.0f];
+//        number.shadowOffset = CGSizeMake(0,-1);
+//        number.numberOfLines = 1;
+//        
+//        [circle addSubview:number];
+//        [number release];
+//        
+//        [self.contentView addSubview:circle];
+//        [circle release];
+                
         UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(88, 13, 190, 20)];
         titleLabel.backgroundColor = [UIColor clearColor];
         titleLabel.textColor = [UIColor colorWithRed:0.396 green:0.396 blue:0.396 alpha:1.0f];

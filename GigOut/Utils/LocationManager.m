@@ -163,7 +163,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(LocationManager);
         m_distanceMoved = [newLocation distanceFromLocation:oldLocation];
         m_currentSpeed = newLocation.speed;
         m_timeDelta = [newLocation.timestamp timeIntervalSinceDate:oldLocation.timestamp];
-            
     }
     
     if(newLocation.horizontalAccuracy < 100 || m_numberOfTries > 5) {
