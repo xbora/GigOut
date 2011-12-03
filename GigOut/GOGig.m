@@ -13,7 +13,6 @@
 
 @synthesize gigName = gigName_;
 @synthesize artistName = artistName_;
-@synthesize location = location_;
 @synthesize venueId = venueId_;
 @synthesize venueName = venueName_;
 @synthesize venueLat = venueLat_;
@@ -27,7 +26,6 @@
 @synthesize venuePhone = venuePhone_;
 @synthesize startDate = startDate_;
 @synthesize description = description_; 
-@synthesize coordinate = coordinate_;
 
 #pragma mark - Class methods
 
@@ -35,7 +33,6 @@
 {
 	[gigName_ release];
 	[artistName_ release];
-	[location_ release];
 	[venueId_ release];
 	[venueName_ release];
 	[venueLat_ release];

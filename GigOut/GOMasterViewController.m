@@ -119,7 +119,7 @@
         lineView.frame = frame;
     }
     
-    GOGig* gigEvent = (GOGig*)[self.gigsArray objectAtIndex:indexPath.row];
+    GOGig *gigEvent = (GOGig*)[self.gigsArray objectAtIndex:indexPath.row];
     
     if(gigEvent) {
         ULImageView* imageView = (ULImageView*)[cell.contentView viewWithTag:IMAGE_TAG];

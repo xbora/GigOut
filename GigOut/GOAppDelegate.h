@@ -15,16 +15,11 @@
 @interface GOAppDelegate : NSObject <UIApplicationDelegate, CLLocationManagerDelegate> {
     UIWindow *window_;
     NSMutableArray *gigs_;
-    CLLocationManager *locationMgr_;
-    NSTimer *locationTimer_;
     NSOperationQueue *operationQueue_;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (retain) NSMutableArray *gigs;
-@property (nonatomic, retain) CLLocationManager *locationMgr;
-@property (nonatomic, retain) NSTimer *locationTimer;
-@property (nonatomic, retain) NSOperationQueue *operationQueue;
 
 @property (strong, nonatomic) UINavigationController *navigationController;
 

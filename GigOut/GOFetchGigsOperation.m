@@ -72,17 +72,64 @@
             NSError *jsonError = nil;
             NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&jsonError];
             
-        }
+      
         
-        //check to see if we have been cancelled
-        if (!self isCancelled)
-        {
-            if (dictionary) {
-                
+            //check to see if we have been cancelled
+            if (![self isCancelled])
+            {
+                if (dictionary) {
+                    
+                    NSDictionary *events = [dictionary objectForKey:@"events"];
+                    if (events) {
+                        
+                        for (NSDictionary *thisEvent in events)
+                        {
+                            NSDictionary *event = [thisEvent objectForKey:@"event"];
+                            GOGig *gig = [[GOGig alloc] init];
+                            gig.gigName = [event objectForKey:@"title"];
+                            
+                            NSDictionary *artists = [event objectForKey:@"artists"];
+                            
+                            
+                            gig.artistName = [artists objectForKey:@"headliner"];                            
+                           
+                            NSDictionary *venue = [thisEvent objectForKey:@"venue"];
+                            
+                            gig.venueId = [venue objectForKey:@"id"]; 
+                            gig.venueName = [venue objectForKey:@"name"];
+                            
+                            
+                            NSDictionary *location = [venue objectForKey:@"location"];
+                            NSDictionary *geopoint = [location objectForKey:@"geo:point"];
+                            
+                            gig.venueLat = [geopoint objectForKey:@"geo:lat"];
+                            gig.venueLng = [geopoint objectForKey:@"geo:long"];
+                            
+                            gig.venueCity = [venue objectForKey:@"city"];
+                            gig.venueCountry = [venue objectForKey:@"country"];
+                            gig.venueStreet = [venue objectForKey:@"street"];
+                            gig.venueZip = [venue objectForKey:@"postalcode"];
+                            gig.venueUrl = [venue objectForKey:@"website"];
+                            gig.venuePhone = [venue objectForKey:@"phonenumber"];
+                            gig.description = [venue objectForKey:@"description"];
+                            gig.startDate = [venue objectForKey:@"startDate"];
+
+                            
+                            [gigs addObject:gig];
+                            
+                            
+                            PSLogDebug(@"gig name = %@", gig.gigName);
+                            
+                            
+                        }
+                    }
+                    
+                }
             }
-        }
+            
+            [gigs release];
         
-        
+        }  
         
     }
     @catch (NSException *e) {
