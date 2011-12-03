@@ -18,8 +18,6 @@
     NSArray *gigsArray;
 }
 
-
-@property (strong, nonatomic) GODetailViewController *detailViewController;
 @property (nonatomic, retain) NSOperationQueue *operationQueue;
 
 - (void)loadData;

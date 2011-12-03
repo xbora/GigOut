@@ -28,7 +28,6 @@
 
 @implementation GOMasterViewController
 
-@synthesize detailViewController = _detailViewController;
 @synthesize activityIndicator;
 @synthesize gigsArray;
 @synthesize operationQueue = operationQueue_;
@@ -36,7 +35,6 @@
 - (void)dealloc
 {
     self.gigsArray = nil;
-    [_detailViewController release];
     [operationQueue_ release];
     [super dealloc];
 }
@@ -135,17 +133,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (!self.detailViewController) {
-        self.detailViewController = [[[GODetailViewController alloc] initWithNibName:@"GODetailViewController" bundle:nil] autorelease];
-    }
-    [self.navigationController pushViewController:self.detailViewController animated:YES];
+    GODetailViewController *detailViewController = [[GODetailViewController alloc] initWithGOGig:[gigsArray objectAtIndex:indexPath.row]];
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    [detailViewController release];
 }
 
 - (void)defineCellFields:(GOMasterTableViewCell *)cell withGigEvent:(GOGig *)gigEvent{
     
     ULImageView* imageView = (ULImageView*)[cell.contentView viewWithTag:IMAGE_TAG];
-    NSString* eventImageUrlString = gigEvent.artistImgUrl;
-    imageView.urlStr = eventImageUrlString;
+    imageView.urlStr = gigEvent.artistImgUrl;
     
     UILabel* titleLabel = (UILabel*)[cell.contentView viewWithTag:TITLE_TAG];
     NSString *capitalize = gigEvent.artistName;

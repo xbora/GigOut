@@ -56,7 +56,10 @@
 - (void)loadView{
     [super loadView];
     
+    self.view.backgroundColor = [UIColor whiteColor];
+    
     self.artistImage = [[[ULImageView alloc] initWithFrame:CGRectMake(49., 20., 222., 140.)] autorelease];
+    artistImage.contentMode = UIViewContentModeScaleAspectFill;
     artistImage.urlStr = gigEvent.artistImgUrl;
     [self.view addSubview:artistImage];
     
