@@ -7,6 +7,9 @@
 //
 
 #import "GODetailViewController.h"
+#import "GOGig.h"
+#import "GOAppDelegate.h"
+#import "PSLog.h"
 
 @interface GODetailViewController ()
 - (void)configureView;
@@ -16,11 +19,14 @@
 
 @synthesize detailItem = _detailItem;
 @synthesize detailDescriptionLabel = _detailDescriptionLabel;
+@synthesize gig = gig_;
+
 
 - (void)dealloc
 {
     [_detailItem release];
     [_detailDescriptionLabel release];
+    [gig_ release];
     [super dealloc];
 }
 

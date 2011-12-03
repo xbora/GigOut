@@ -9,10 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "GOGig.h"
 
-@interface GODetailViewController : UIViewController
+@interface GODetailViewController : UIViewController {
+    GOGig *gig_;
+}
 
 @property (strong, nonatomic) id detailItem;
 
 @property (strong, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+
+@property (nonatomic, retain) GOGig *gig;
 
 @end
