@@ -17,6 +17,8 @@
 		876C6951148A6373000ECF1C /* GODetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 876C6950148A6373000ECF1C /* GODetailViewController.m */; };
 		876C6954148A6374000ECF1C /* GOMasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 876C6952148A6373000ECF1C /* GOMasterViewController.xib */; };
 		876C6957148A6374000ECF1C /* GODetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 876C6955148A6374000ECF1C /* GODetailViewController.xib */; };
+		876C6969148A671F000ECF1C /* GOFetchGigsOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 876C6968148A671F000ECF1C /* GOFetchGigsOperation.m */; };
+		876C696B148A6869000ECF1C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 876C696A148A6869000ECF1C /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,10 @@
 		876C6950148A6373000ECF1C /* GODetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GODetailViewController.m; sourceTree = "<group>"; };
 		876C6953148A6374000ECF1C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/GOMasterViewController.xib; sourceTree = "<group>"; };
 		876C6956148A6374000ECF1C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/GODetailViewController.xib; sourceTree = "<group>"; };
+		876C6967148A671F000ECF1C /* GOFetchGigsOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GOFetchGigsOperation.h; sourceTree = "<group>"; };
+		876C6968148A671F000ECF1C /* GOFetchGigsOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOFetchGigsOperation.m; sourceTree = "<group>"; };
+		876C696A148A6869000ECF1C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		876C696C148A6DC1000ECF1C /* PSLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSLog.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				876C696B148A6869000ECF1C /* CoreLocation.framework in Frameworks */,
 				876C693B148A6373000ECF1C /* UIKit.framework in Frameworks */,
 				876C693D148A6373000ECF1C /* Foundation.framework in Frameworks */,
 				876C693F148A6373000ECF1C /* CoreGraphics.framework in Frameworks */,
@@ -72,6 +79,7 @@
 		876C6939148A6373000ECF1C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				876C696A148A6869000ECF1C /* CoreLocation.framework */,
 				876C693A148A6373000ECF1C /* UIKit.framework */,
 				876C693C148A6373000ECF1C /* Foundation.framework */,
 				876C693E148A6373000ECF1C /* CoreGraphics.framework */,
@@ -82,6 +90,7 @@
 		876C6940148A6373000ECF1C /* GigOut */ = {
 			isa = PBXGroup;
 			children = (
+				876C6965148A66F2000ECF1C /* Operations */,
 				876C6949148A6373000ECF1C /* GOAppDelegate.h */,
 				876C694A148A6373000ECF1C /* GOAppDelegate.m */,
 				876C694C148A6373000ECF1C /* GOMasterViewController.h */,
@@ -91,6 +100,7 @@
 				876C6952148A6373000ECF1C /* GOMasterViewController.xib */,
 				876C6955148A6374000ECF1C /* GODetailViewController.xib */,
 				876C6941148A6373000ECF1C /* Supporting Files */,
+				876C696C148A6DC1000ECF1C /* PSLog.h */,
 			);
 			path = GigOut;
 			sourceTree = "<group>";
@@ -104,6 +114,15 @@
 				876C6948148A6373000ECF1C /* GigOut-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		876C6965148A66F2000ECF1C /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				876C6967148A671F000ECF1C /* GOFetchGigsOperation.h */,
+				876C6968148A671F000ECF1C /* GOFetchGigsOperation.m */,
+			);
+			name = Operations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,6 +192,7 @@
 				876C694B148A6373000ECF1C /* GOAppDelegate.m in Sources */,
 				876C694E148A6373000ECF1C /* GOMasterViewController.m in Sources */,
 				876C6951148A6373000ECF1C /* GODetailViewController.m in Sources */,
+				876C6969148A671F000ECF1C /* GOFetchGigsOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +310,7 @@
 				876C695C148A6374000ECF1C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
