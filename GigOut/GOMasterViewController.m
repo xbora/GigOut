@@ -7,12 +7,13 @@
 //
 
 #import "GOMasterViewController.h"
-
 #import "GODetailViewController.h"
+#import "GOFetchGigsOperation.h"
 
 @implementation GOMasterViewController
 
 @synthesize detailViewController = _detailViewController;
+@synthesize operationQueue = operationQueue_;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,6 +27,7 @@
 - (void)dealloc
 {
     [_detailViewController release];
+    [operationQueue_ release];
     [super dealloc];
 }
 
@@ -41,6 +43,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    operationQueue_ = [[NSOperationQueue alloc] init];
+    [self loadData];
+    
 }
 
 - (void)viewDidUnload
@@ -48,6 +54,13 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+- (void)loadData {
+    [[self operationQueue] cancelAllOperations];
+    GOFetchGigsOperation *operation = [[GOFetchGigsOperation alloc] init];
+    [[self operationQueue] addOperation: operation];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated

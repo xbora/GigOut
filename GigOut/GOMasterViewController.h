@@ -10,8 +10,16 @@
 
 @class GODetailViewController;
 
+
 @interface GOMasterViewController : UITableViewController
+{
+  NSOperationQueue *operationQueue_;  
+}
+
 
 @property (strong, nonatomic) GODetailViewController *detailViewController;
+@property (nonatomic, retain) NSOperationQueue *operationQueue;
+- (void)loadData;
+
 
 @end

@@ -59,6 +59,7 @@
             
             //fetch data from web service
             NSString *jsonString = [NSString stringWithContentsOfURL:fetchUrl usedEncoding:&encoding error:nil];
+            PSLogDebug(@"json %@", jsonString);
             NSData *jsonData = [jsonString dataUsingEncoding:NSUTF32BigEndianStringEncoding];
             NSError *jsonError = nil;
             NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&jsonError];
