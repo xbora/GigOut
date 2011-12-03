@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GOGig.h"
 
 @interface GODetailViewController : UIViewController
 
