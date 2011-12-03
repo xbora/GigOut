@@ -49,11 +49,9 @@
             NSString *apiKey = @"b25b959554ed76058ac220b7b2e0a026";
             //NSUInteger count = kMaxResults;
             NSUInteger radius = kSearchRadiusKms;
-            NSString *fetchUrlString = [NSString stringWithFormat:@"http://ws.audioscrobbler.com/2.0/?method=geo.getevents&lat=%@&lng=%@&format=json&distance=%@&api_key=%@",
+            NSString *fetchUrlString = [NSString stringWithFormat:@"http://ws.audioscrobbler.com/2.0/?method=geo.getevents&lat=%@&lng=%@&format=json&api_key=%@",
                                         @"51.549751017014245",
-                                        @"-1.494140625",
-                                        radius,
-                                        apiKey];
+                                        @"-1.494140625",                                        apiKey];
             NSURL *fetchUrl = [NSURL URLWithString: fetchUrlString];
             NSStringEncoding encoding;
             
