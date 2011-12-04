@@ -12,6 +12,7 @@
 #import "GOGig.h"
 #import "GOAppDelegate.h"
 #import "PSLog.h"
+#import "GOFetch4SqVenueId.h"
 
 @interface GODetailViewController ()
 
@@ -165,6 +166,11 @@
 
 - (void)onCreate:(id)sender{
 
+    GOFetch4SqVenueId *venueId = [[GOFetch4SqVenueId alloc] initWithGigObject:gigEvent];
+    [venueId setDelegate:self];
+    [venueId retrieve4SqVenueId];
+
+    
 }
 
 - (void)showMore{
@@ -182,6 +188,16 @@
     [gigEvent setVideoArray:gigsVideoArray];
     [videoTableView reloadData];
 }
+
+- (void)fetchRequestDidFinishWithVenueId:(NSString *)venue4SqId
+{
+    //    [gigEvent setVideoArray:gigsVideoArray];
+    //    [videoTableView reloadData];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Venue id is" message:[NSString stringWithFormat:@"%@",venue4SqId] delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles: nil];
+    [alert show];
+    [alert release];
+}
+
 
 #pragma mark -
 #pragma mark GOFetchSentimentDelegate implementation

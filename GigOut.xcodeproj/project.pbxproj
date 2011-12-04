@@ -19,6 +19,7 @@
 		876C6969148A671F000ECF1C /* GOFetchGigsOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 876C6968148A671F000ECF1C /* GOFetchGigsOperation.m */; };
 		876C696B148A6869000ECF1C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 876C696A148A6869000ECF1C /* CoreLocation.framework */; };
 		876C6970148A7A2A000ECF1C /* GOGig.m in Sources */ = {isa = PBXBuildFile; fileRef = 876C696F148A7A2A000ECF1C /* GOGig.m */; };
+		87CC8382148B8FB500D63287 /* GOFetch4SqVenueId.m in Sources */ = {isa = PBXBuildFile; fileRef = 87CC8381148B8FB500D63287 /* GOFetch4SqVenueId.m */; };
 		BD11C22F148AB30B002F35C6 /* BACK-OrganiserThumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = BD11C223148AB30B002F35C6 /* BACK-OrganiserThumbnail.png */; };
 		BD11C230148AB30B002F35C6 /* BACK-OrganiserThumbnail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD11C224148AB30B002F35C6 /* BACK-OrganiserThumbnail@2x.png */; };
 		BD11C231148AB30B002F35C6 /* BACK-RowSocials.png in Resources */ = {isa = PBXBuildFile; fileRef = BD11C225148AB30B002F35C6 /* BACK-RowSocials.png */; };
@@ -100,6 +101,8 @@
 		876C696C148A6DC1000ECF1C /* PSLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PSLog.h; path = ../PSLog.h; sourceTree = "<group>"; };
 		876C696E148A7A2A000ECF1C /* GOGig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GOGig.h; sourceTree = "<group>"; };
 		876C696F148A7A2A000ECF1C /* GOGig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOGig.m; sourceTree = "<group>"; };
+		87CC8380148B8FB500D63287 /* GOFetch4SqVenueId.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GOFetch4SqVenueId.h; sourceTree = "<group>"; };
+		87CC8381148B8FB500D63287 /* GOFetch4SqVenueId.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOFetch4SqVenueId.m; sourceTree = "<group>"; };
 		BD11C223148AB30B002F35C6 /* BACK-OrganiserThumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BACK-OrganiserThumbnail.png"; sourceTree = "<group>"; };
 		BD11C224148AB30B002F35C6 /* BACK-OrganiserThumbnail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BACK-OrganiserThumbnail@2x.png"; sourceTree = "<group>"; };
 		BD11C225148AB30B002F35C6 /* BACK-RowSocials.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BACK-RowSocials.png"; sourceTree = "<group>"; };
@@ -239,6 +242,8 @@
 				BD11C322148AE81D002F35C6 /* GOFetchVideo.m */,
 				BDA71FA5148B77A300A034B8 /* GOFetchSentiment.h */,
 				BDA71FA6148B77A300A034B8 /* GOFetchSentiment.m */,
+				87CC8380148B8FB500D63287 /* GOFetch4SqVenueId.h */,
+				87CC8381148B8FB500D63287 /* GOFetch4SqVenueId.m */,
 			);
 			name = Operations;
 			sourceTree = "<group>";
@@ -476,6 +481,7 @@
 				BD11C323148AE81E002F35C6 /* GOFetchVideo.m in Sources */,
 				BDA71FA7148B77A300A034B8 /* GOFetchSentiment.m in Sources */,
 				BDA71FAA148B7B8100A034B8 /* GOGigSentiment.m in Sources */,
+				87CC8382148B8FB500D63287 /* GOFetch4SqVenueId.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
