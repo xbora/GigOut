@@ -11,7 +11,7 @@
 
 @protocol GOFetchSentimentDelegate <NSObject>
 
-- (void)fetchSentimentRequestDidFinishWithArray:(NSArray *)gigsVideoArray;
+- (void)fetchSentimentRequestDidFinishWithMessage:(NSString *)sentimentMessage;
 
 @end
 

@@ -22,4 +22,6 @@
 @property (nonatomic, assign) CGFloat tempo;
 @property (nonatomic, assign) CGFloat danceability;
 
+- (NSString *)sentimentString;
+
 @end

@@ -15,21 +15,23 @@
     
     NSString *apiKey = @"b25b959554ed76058ac220b7b2e0a026";
     NSString *fetchUrlString = [NSString stringWithFormat:@"http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=%@&api_key=%@&limit=1&format=json", [artistName stringByAddingPercentEscapesUsingEncoding: NSASCIIStringEncoding],apiKey];
-    NSLog(@"The sentiment request is %@",fetchUrlString);
-    NSURL *fetchTrackUrl = [NSURL URLWithString: fetchUrlString];
-    NSURLRequest *request = [NSURLRequest requestWithURL:fetchTrackUrl];
+
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString: fetchUrlString]];
     NSURLResponse *response = nil;
     NSError *error = nil;
     NSData *receivedData = [NSURLConnection sendSynchronousRequest:request 
                                                  returningResponse:&response 
                                                              error:&error];
-    NSError *jsonError = nil;
-    NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:receivedData options:kNilOptions error:&jsonError];
-    
-    if (dictionary != nil) {
-        NSString *trackName = (NSString *)[[[dictionary objectForKey:@"toptracks"] objectForKey:@"track"] objectForKey:@"name"];
-        return trackName;
-        }
+    if (error != nil) {
+
+        NSError *jsonError = nil;
+        NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:receivedData options:kNilOptions error:&jsonError];
+        
+        if (dictionary != nil && jsonError != nil) {
+            NSString *trackName = (NSString *)[[[dictionary objectForKey:@"toptracks"] objectForKey:@"track"] objectForKey:@"name"];
+            return trackName;
+            }
+    }
     return nil;
 }
 
@@ -41,31 +43,36 @@
                                 [artistName stringByAddingPercentEscapesUsingEncoding: NSASCIIStringEncoding],
                                 [trackName stringByAddingPercentEscapesUsingEncoding: NSASCIIStringEncoding]];
 
-    NSURL *fetchTrackUrl = [NSURL URLWithString: fetchUrlString];
-    NSURLRequest *request = [NSURLRequest requestWithURL:fetchTrackUrl];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString: fetchUrlString]];
     NSURLResponse *response = nil;
     NSError *error = nil;
     NSData *receivedData = [NSURLConnection sendSynchronousRequest:request 
                                                  returningResponse:&response 
                                                              error:&error];
-    NSError *jsonError = nil;
-    NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:receivedData options:kNilOptions error:&jsonError];
-    
-    if (dictionary != nil) {
-        NSArray *dataArray = [[dictionary objectForKey:@"response"] objectForKey:@"songs"];
-        if (dataArray) {
-            //for (NSDictionary *songs in data)
-            NSDictionary *songs = [dataArray objectAtIndex:0];
-            {
-                GOGigSentiment *gigSentiment = [[GOGigSentiment alloc] init];
-                [gigSentiment setTempo:[(NSNumber*)[songs objectForKey:@"tempo"] floatValue]];
-                [gigSentiment setLoudness:[(NSNumber*)[songs objectForKey:@"loudness"] floatValue]];
-                [gigSentiment setDuration:[(NSNumber*)[songs objectForKey:@"duration"] floatValue]];
-                [gigSentiment setEnergy:[(NSNumber*)[songs objectForKey:@"energy"] floatValue]];
-                [gigSentiment setDanceability:[(NSNumber*)[songs objectForKey:@"danceability"] floatValue]];
-            }                    
-        }
+    if (error != nil) {
 
+        NSError *jsonError = nil;
+        NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:receivedData options:kNilOptions error:&jsonError];
+        
+        if (dictionary != nil && jsonError != nil) {
+            NSArray *dataArray = [[dictionary objectForKey:@"response"] objectForKey:@"songs"];
+            if (dataArray) {
+                //for (NSDictionary *songs in data)
+                NSDictionary *song = [dataArray objectAtIndex:0];
+                {
+                    if (song) {
+                        GOGigSentiment *gigSentiment = [[GOGigSentiment alloc] init];
+                        [gigSentiment setTempo:[(NSNumber*)[song objectForKey:@"tempo"] floatValue]];
+                        [gigSentiment setLoudness:[(NSNumber*)[song objectForKey:@"loudness"] floatValue]];
+                        [gigSentiment setDuration:[(NSNumber*)[song objectForKey:@"duration"] floatValue]];
+                        [gigSentiment setEnergy:[(NSNumber*)[song objectForKey:@"energy"] floatValue]];
+                        [gigSentiment setDanceability:[(NSNumber*)[song objectForKey:@"danceability"] floatValue]];
+                        
+                        return [gigSentiment sentimentString];
+                    }
+                }                    
+            }
+        }
     }
     return nil;
 }

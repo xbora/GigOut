@@ -76,7 +76,7 @@
                 if (events) {
                     for (NSDictionary *event in events)
                     {
-                        NSLog(@"The events values are %@", event);
+                        //NSLog(@"The events values are %@", event);
                         GOGig *gig = [[GOGig alloc] init];
                         gig.gigName = [event objectForKey:@"title"];
                         

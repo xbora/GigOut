@@ -8,6 +8,7 @@
 
 #import "GOFetchSentiment.h"
 #import "GOGigSentiment.h"
+#import "GOConnectionRequest.h"
 
 @implementation GOFetchSentiment
 
@@ -36,42 +37,13 @@
 
 -(void)retrieveSentimentData
 {
-    
-    NSMutableArray *gigs = [[NSMutableArray alloc] init];
-    NSString *apiKey = @"b25b959554ed76058ac220b7b2e0a026";
-    NSString *fetchUrlString = [NSString stringWithFormat:@"http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=%@&api_key=%@&limitformat=json", [_artistName stringByAddingPercentEscapesUsingEncoding: NSASCIIStringEncoding],apiKey];
-    NSLog(@"The sentiment request is %@",fetchUrlString);
-    NSURL *fetchUrl = [NSURL URLWithString: fetchUrlString];
-    NSURLRequest *request = [NSURLRequest requestWithURL:fetchUrl];
-    NSURLResponse *response = nil;
-    NSError *error = nil;
-    NSData *receivedData = [NSURLConnection sendSynchronousRequest:request 
-                                                 returningResponse:&response 
-                                                             error:&error];
-    NSError *jsonError = nil;
-    NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:receivedData options:kNilOptions error:&jsonError];
-    
-    if (dictionary != nil) {
-        NSArray *dataArray = [[dictionary objectForKey:@"response"] objectForKey:@"songs"];
-        if (dataArray) {
-            //for (NSDictionary *songs in data)
-            NSDictionary *songs = [dataArray objectAtIndex:0];
-            {
-                GOGigSentiment *gigSentiment = [[GOGigSentiment alloc] init];
-                [gigSentiment setTempo:[(NSNumber*)[songs objectForKey:@"tempo"] floatValue]];
-                [gigSentiment setLoudness:[(NSNumber*)[songs objectForKey:@"loudness"] floatValue]];
-                [gigSentiment setDuration:[(NSNumber*)[songs objectForKey:@"duration"] floatValue]];
-                [gigSentiment setEnergy:[(NSNumber*)[songs objectForKey:@"energy"] floatValue]];
-                [gigSentiment setDanceability:[(NSNumber*)[songs objectForKey:@"danceability"] floatValue]];
-            }                    
-        }
+    NSString *topTrackName = [GOConnectionRequest getTopTrackNameForArtist:_artistName];
+    NSString *sentimentMessage = [GOConnectionRequest getSentimentsForTrack:topTrackName
+                                                              andArtistName:_artistName];
 
-        if (delegate != nil &&
-            [delegate respondsToSelector:@selector(fetchSentimentRequestDidFinishWithArray:)]){
-            [delegate performSelector:@selector(fetchSentimentRequestDidFinishWithArray:) withObject:gigs];
-        }
-        
-        [gigs release];
+    if (delegate != nil &&
+        [delegate respondsToSelector:@selector(fetchSentimentRequestDidFinishWithMessage:)]){
+        [delegate fetchSentimentRequestDidFinishWithMessage:sentimentMessage];
     }
 }
 
