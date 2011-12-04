@@ -66,17 +66,23 @@
             for (NSDictionary *venue in venueGroups){
                 NSString *venue4sqName = [venue objectForKey:
                                           @"name"];
-                
-                if ([venue4sqName rangeOfString:_gigObject.venueName].location == NSNotFound) {
-                    NSLog(@"string does not contain bla");
-                } else {
-                    NSLog(@"string contains bla!");
-                    venue4sqId = [venue objectForKey:
-                                              @"id"];
-                    
+                if ([venue4sqName isEqualToString:_gigObject.venueName])
+                {
+                    venue4sqId = [venue objectForKey:@"id"];  
+                    NSLog(@"venue id: %@",venue4sqId);
                 }
+                
+                //if ([venue4sqName rangeOfString:_gigObject.venueName].location == NSNotFound) {
+                    //NSLog(@"string does not contain bla");
+                //} else {
+                  //  NSLog(@"string contains bla!");
+                   // venue4sqId = [venue objectForKey:
+                   //                           @"id"];
+                    //NSLog(@"venue id: %@",venue4sqId);
+                    
+                //}
             }
-            NSLog(@"boom");
+            
         }
         
         if (delegate != nil &&
