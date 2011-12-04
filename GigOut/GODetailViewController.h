@@ -9,12 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "ULImageView.h"
 #import "GOGig.h"
+#import "GOFetchVideoOperation.h"
 
-@interface GODetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>{
+@interface GODetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, GOFetchVideoOperationDelegate>{
     
     ULImageView *artistImage;
     UILabel     *detailDescriptionLabel;
     UITableView *videoTableView;
+    NSOperationQueue *operationQueue;
     
     GOGig       *gigEvent;
 }

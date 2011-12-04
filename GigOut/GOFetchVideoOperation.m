@@ -8,22 +8,17 @@
 
 #import "GOFetchVideoOperation.h"
 
-@interface GOFetchVideoOperation ()
-
-- (void)fetchVideoRequestForArtistName:(NSString *)artistName;
-
-@end
-
 @implementation GOFetchVideoOperation
 
 @synthesize delegate;
+@synthesize artistName = _artistName;
 
 - (id) initWithArtistName:(NSString *)artistName
 {
     self = [super init];
     if (self)
     {
-        [self fetchVideoRequestForArtistName:artistName];
+        _artistName = artistName;
     }
     return self;
 }
@@ -38,7 +33,7 @@
 
 #pragma mark - Operation main method
 
-- (void)fetchVideoRequestForArtistName:(NSString *)artistName;
+- (void) main
 {
     @try {        
         //check to see if we have been cancelled.
@@ -48,27 +43,29 @@
             // Change the request with the youtube video one!
             
             NSMutableArray *gigs = [[NSMutableArray alloc] init];
-            NSString *apiKey = @"b25b959554ed76058ac220b7b2e0a026";
-            NSString *fetchUrlString = [NSString stringWithFormat:@"http://ws.audioscrobbler.com/2.0/?method=geo.getevents&limit=25&lat=%@&lng=%@&format=json&api_key=%@",
-                                        @"51.549751017014245",
-                                        @"-1.494140625", apiKey];
+            NSString *fetchUrlString = [NSString stringWithFormat:@"http://gdata.youtube.com/feeds/api/videos?v=2&alt=jsonc&q=%@", [_artistName stringByAddingPercentEscapesUsingEncoding: NSASCIIStringEncoding]];
             NSURL *fetchUrl = [NSURL URLWithString: fetchUrlString];
             NSStringEncoding encoding;
             
             //fetch data from web service
             NSString *jsonString = [NSString stringWithContentsOfURL:fetchUrl usedEncoding:&encoding error:nil];
-            NSData *jsonData = [jsonString dataUsingEncoding:NSUTF32BigEndianStringEncoding];
+            
             NSError *jsonError = nil;
+            NSData *jsonData = [jsonString dataUsingEncoding:NSUTF32BigEndianStringEncoding];
             NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&jsonError];
             
             //check to see if we have been cancelled
             if (![self isCancelled] && dictionary != nil)
             {                    
-                NSArray *events = [[dictionary objectForKey:@"events"] objectForKey:@"event"];
-                if (events) {
-                    for (NSDictionary *event in events)
+                NSArray *data = [[dictionary objectForKey:@"data"] objectForKey:@"items"];
+                if (data) {
+                    for (NSDictionary *item in data)
                     {
-                        
+                        GOGigVideoInfo *videoInfo = [[GOGigVideoInfo alloc] init];
+                        [videoInfo setVideoDescription:[item objectForKey:@"description"]];
+                        [videoInfo setVideoStringUrl:[[item objectForKey:@"player"] objectForKey:@"mobile"]];
+                        [gigs addObject:videoInfo];
+                        NSLog(@"mobile is: %@", [[item objectForKey:@"player"] objectForKey:@"mobile"] );
                     }                    
                 }
             }
@@ -85,7 +82,7 @@
         NSLog(@"%@", e);
     }
     
-    
+
 }
 
 @end

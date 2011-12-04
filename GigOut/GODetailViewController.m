@@ -19,6 +19,7 @@
 @property (nonatomic, retain) UILabel     *detailDescriptionLabel;
 @property (nonatomic, retain) UITableView *videoTableView;
 @property (nonatomic, retain) GOGig       *gigEvent;
+@property (nonatomic, retain) NSOperationQueue *operationQueue;
 
 - (void)retrieveGigVideos;
 
@@ -30,6 +31,7 @@
 @synthesize detailDescriptionLabel;
 @synthesize videoTableView;
 @synthesize gigEvent;
+@synthesize operationQueue;
 
 - (void)dealloc
 {
@@ -37,6 +39,7 @@
     self.artistImage = nil;
     self.detailDescriptionLabel = nil;
     self.videoTableView = nil;
+    [operationQueue release];
 }
 
 - (id)initWithGOGig:(GOGig *)_gigEvent
@@ -121,15 +124,28 @@
 #pragma mark UtilsFunct
 - (void)retrieveGigVideos{
     
-    // Parse here the gigEvent.videoArray obJect and then reload the tableView
+    operationQueue = [[NSOperationQueue alloc] init];
+    [[self operationQueue] cancelAllOperations];
+    GOFetchVideoOperation *operation = [[GOFetchVideoOperation alloc] initWithArtistName:[gigEvent artistName]];
+    [operation setDelegate:self];
+    NSLog(@"delegate: %@", operation.delegate);
+    [operationQueue addOperation:operation];
     
-    [self.videoTableView reloadData];
+//    [self.videoTableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Release any cached data, images, etc that aren't in use.
+}
+
+#pragma mark -
+#pragma mark Delegate implementation
+- (void)fetchVideoRequestDidFinishWithArray:(NSArray *)gigsVideoArray
+{
+    [gigEvent setVideoArray:gigsVideoArray];
+    [videoTableView reloadData];
 }
 
 #pragma mark - View lifecycle
