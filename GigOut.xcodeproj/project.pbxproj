@@ -59,6 +59,7 @@
 		BDA71FA4148B718F00A034B8 /* ButtonOrange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BDA71FA2148B718F00A034B8 /* ButtonOrange@2x.png */; };
 		BDA71FA7148B77A300A034B8 /* GOFetchSentiment.m in Sources */ = {isa = PBXBuildFile; fileRef = BDA71FA6148B77A300A034B8 /* GOFetchSentiment.m */; };
 		BDA71FAA148B7B8100A034B8 /* GOGigSentiment.m in Sources */ = {isa = PBXBuildFile; fileRef = BDA71FA9148B7B8100A034B8 /* GOGigSentiment.m */; };
+		BDA71FAD148B8E2500A034B8 /* GOConnectionRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BDA71FAC148B8E2500A034B8 /* GOConnectionRequest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,6 +153,8 @@
 		BDA71FA6148B77A300A034B8 /* GOFetchSentiment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOFetchSentiment.m; sourceTree = "<group>"; };
 		BDA71FA8148B7B8100A034B8 /* GOGigSentiment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GOGigSentiment.h; sourceTree = "<group>"; };
 		BDA71FA9148B7B8100A034B8 /* GOGigSentiment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOGigSentiment.m; sourceTree = "<group>"; };
+		BDA71FAB148B8E2500A034B8 /* GOConnectionRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GOConnectionRequest.h; sourceTree = "<group>"; };
+		BDA71FAC148B8E2500A034B8 /* GOConnectionRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOConnectionRequest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +242,8 @@
 				BD11C322148AE81D002F35C6 /* GOFetchVideo.m */,
 				BDA71FA5148B77A300A034B8 /* GOFetchSentiment.h */,
 				BDA71FA6148B77A300A034B8 /* GOFetchSentiment.m */,
+				BDA71FAB148B8E2500A034B8 /* GOConnectionRequest.h */,
+				BDA71FAC148B8E2500A034B8 /* GOConnectionRequest.m */,
 			);
 			name = Operations;
 			sourceTree = "<group>";
@@ -476,6 +481,7 @@
 				BD11C323148AE81E002F35C6 /* GOFetchVideo.m in Sources */,
 				BDA71FA7148B77A300A034B8 /* GOFetchSentiment.m in Sources */,
 				BDA71FAA148B7B8100A034B8 /* GOGigSentiment.m in Sources */,
+				BDA71FAD148B8E2500A034B8 /* GOConnectionRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -66,7 +66,7 @@
     self.artistImage = [[[ULImageView alloc] initWithFrame:CGRectMake(49., 20., 222., 140.)] autorelease];
     artistImage.contentMode = UIViewContentModeScaleToFill;
     artistImage.autoresizesSubviews = NO;
-    artistImage.urlStr = gigEvent.artistImgUrl;
+    artistImage.urlStr = gigEvent.artistLargeImgUrl;
     [self.view addSubview:artistImage];
     
     UIImage *image = [UIImage imageNamed:@"TopbarButton.png"];

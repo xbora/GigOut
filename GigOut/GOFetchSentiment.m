@@ -39,7 +39,7 @@
     
     NSMutableArray *gigs = [[NSMutableArray alloc] init];
     NSString *apiKey = @"b25b959554ed76058ac220b7b2e0a026";
-    NSString *fetchUrlString = [NSString stringWithFormat:@"http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=%@&api_key=%@&format=json", [_artistName stringByAddingPercentEscapesUsingEncoding: NSASCIIStringEncoding],apiKey];
+    NSString *fetchUrlString = [NSString stringWithFormat:@"http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=%@&api_key=%@&limitformat=json", [_artistName stringByAddingPercentEscapesUsingEncoding: NSASCIIStringEncoding],apiKey];
     NSLog(@"The sentiment request is %@",fetchUrlString);
     NSURL *fetchUrl = [NSURL URLWithString: fetchUrlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:fetchUrl];

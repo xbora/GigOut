@@ -13,7 +13,8 @@
 
 @synthesize gigName = gigName_;
 @synthesize artistName = artistName_;
-@synthesize artistImgUrl = artistImgUrl_;
+@synthesize artistLargeImgUrl = artistLargeImgUrl_;
+@synthesize artistSmallImgUrl = artistSmallImgUrl_;
 @synthesize venueId = venueId_;
 @synthesize venueName = venueName_;
 @synthesize venueLat = venueLat_;
@@ -34,7 +35,8 @@
 {
 	[gigName_ release];
 	[artistName_ release];
-    [artistImgUrl_ release];
+    [artistLargeImgUrl_ release];
+    [artistSmallImgUrl_ release];
 	[venueId_ release];
 	[venueName_ release];
 	[venueLat_ release];

@@ -107,7 +107,10 @@
                         NSArray *imgArray = [event objectForKey:@"image"];
                         for (NSDictionary *imgJSON in imgArray) {
                             if ([[imgJSON valueForKey:@"size"] isEqualToString:@"extralarge"]) {
-                                gig.artistImgUrl = [imgJSON valueForKey:@"#text"];
+                                gig.artistLargeImgUrl = [imgJSON valueForKey:@"#text"];
+                            }
+                            else if([[imgJSON valueForKey:@"size"] isEqualToString:@"small"]) {
+                                gig.artistSmallImgUrl = [imgJSON valueForKey:@"#text"];
                             }
                         }
                         gig.startDate = [event objectForKey:@"startDate"];

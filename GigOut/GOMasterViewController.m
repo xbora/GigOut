@@ -146,7 +146,7 @@
 - (void)defineCellFields:(GOMasterTableViewCell *)cell withGigEvent:(GOGig *)gigEvent{
     
     ULImageView* imageView = (ULImageView*)[cell.contentView viewWithTag:IMAGE_TAG];
-    imageView.urlStr = gigEvent.artistImgUrl;
+    imageView.urlStr = gigEvent.artistSmallImgUrl;
     
     UILabel* titleLabel = (UILabel*)[cell.contentView viewWithTag:TITLE_TAG];
     NSString *capitalize = gigEvent.artistName;
