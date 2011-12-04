@@ -72,6 +72,7 @@
                     NSLog(@"venue id: %@",venue4sqId);
                 }
                 
+<<<<<<< HEAD
                 //if ([venue4sqName rangeOfString:_gigObject.venueName].location == NSNotFound) {
                     //NSLog(@"string does not contain bla");
                 //} else {
@@ -79,6 +80,15 @@
                    // venue4sqId = [venue objectForKey:
                    //                           @"id"];
                     //NSLog(@"venue id: %@",venue4sqId);
+=======
+                if ([venue4sqName rangeOfString:_gigObject.venueName].location == NSNotFound) {
+                    NSLog(@"string does not contain bla");
+                } else {
+                    NSLog(@"string contains bla!");
+                    venue4sqId = [venue objectForKey:
+                                              @"id"];
+                    break;
+>>>>>>> 65ae57c90cfcc61deeec50ee6677fd81e6999345
                     
                 //}
             }
