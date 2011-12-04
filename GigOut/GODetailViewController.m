@@ -16,7 +16,8 @@
 @interface GODetailViewController ()
 
 @property (nonatomic, retain) ULImageView *artistImage;
-@property (nonatomic, retain) UILabel     *detailDescriptionLabel;
+@property (nonatomic, retain) UILabel     *venueDetailLabel;
+@property (nonatomic, retain) UILabel     *startDateLabel;
 @property (nonatomic, retain) UITableView *videoTableView;
 @property (nonatomic, retain) GOGig       *gigEvent;
 
@@ -27,16 +28,18 @@
 @implementation GODetailViewController
 
 @synthesize artistImage;
-@synthesize detailDescriptionLabel;
+@synthesize venueDetailLabel;
 @synthesize videoTableView;
+@synthesize startDateLabel;
 @synthesize gigEvent;
 
 - (void)dealloc
 {
-    self.gigEvent = nil;
-    self.artistImage = nil;
-    self.detailDescriptionLabel = nil;
-    self.videoTableView = nil;
+    self.gigEvent         = nil;
+    self.artistImage      = nil;
+    self.startDateLabel   = nil;
+    self.venueDetailLabel = nil;
+    self.videoTableView   = nil;
 }
 
 - (id)initWithGOGig:(GOGig *)_gigEvent
@@ -63,10 +66,15 @@
     artistImage.urlStr = gigEvent.artistImgUrl;
     [self.view addSubview:artistImage];
     
-    self.detailDescriptionLabel = [[[UILabel alloc] initWithFrame:CGRectMake(40., 173., 240, 81.)] autorelease];
-    detailDescriptionLabel.numberOfLines = 4;
-    detailDescriptionLabel.text = @"Bloody hell retrieve this info somewhere";
-    [self.view addSubview:detailDescriptionLabel];
+    self.venueDetailLabel = [[[UILabel alloc] initWithFrame:CGRectMake(40., 173., 240, 41.)] autorelease];
+    venueDetailLabel.numberOfLines = 2;
+    venueDetailLabel.text = gigEvent.venueName;
+    [self.view addSubview:venueDetailLabel];
+    
+    self.startDateLabel = [[[UILabel alloc] initWithFrame:CGRectMake(40., 213., 240, 41.)] autorelease];
+    startDateLabel.numberOfLines = 1;
+    startDateLabel.text = gigEvent.startDate;
+    [self.view addSubview:venueDetailLabel];
     
     self.videoTableView = [[[UITableView alloc] initWithFrame:CGRectMake(0.0, 262., 320., 162.) style:UITableViewStyleGrouped] autorelease];
     videoTableView.delegate = self;
@@ -108,7 +116,6 @@
                                                  reuseIdentifier:CellIdentifier] autorelease];
         cell.videoLabel.text = descriptionString;
     }
-    
     return cell;
 }
 

@@ -52,8 +52,6 @@
 }
 
 - (void)defaultCell{
-
-    NSString *labelString = @"Edizione 2010";
     
     self.videoView = [[[UIWebView alloc] initWithFrame:CGRectMake(kWebViewPadding*2, kWebViewPadding, 90., 60.)] autorelease];
     videoView.backgroundColor = [UIColor blackColor];
@@ -67,7 +65,6 @@
     videoLabel.textAlignment = UITextAlignmentLeft;
     videoLabel.font = [UIFont systemFontOfSize:16.];
     videoLabel.textColor = [UIColor grayColor];
-    videoLabel.text = [labelString uppercaseString];
     [self addSubview:videoLabel];
 }
 

@@ -44,7 +44,6 @@
         //check to see if we have been cancelled.
         if (![self isCancelled])
         {
-            
             // Change the request with the youtube video one!
             
             NSMutableArray *gigs = [[NSMutableArray alloc] init];

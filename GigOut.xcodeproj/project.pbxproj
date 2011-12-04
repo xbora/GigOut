@@ -34,6 +34,7 @@
 		BD11C31D148AD4B1002F35C6 /* GOGigDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD11C31C148AD4B0002F35C6 /* GOGigDetailTableViewCell.m */; };
 		BD11C320148AD602002F35C6 /* GOGigVideoInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BD11C31F148AD602002F35C6 /* GOGigVideoInfo.m */; };
 		BD11C323148AE81E002F35C6 /* GOFetchVideoOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BD11C322148AE81D002F35C6 /* GOFetchVideoOperation.m */; };
+		BD11C325148B0272002F35C6 /* TestXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD11C324148B0272002F35C6 /* TestXib.xib */; };
 		BD5E18D4148A768800C372A0 /* GOMasterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5E18CC148A768800C372A0 /* GOMasterTableViewCell.m */; };
 		BD5E18D5148A768800C372A0 /* ULImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5E18CE148A768800C372A0 /* ULImageView.m */; };
 		BD5E18D6148A768800C372A0 /* ULCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5E18D1148A768800C372A0 /* ULCacheManager.m */; };
@@ -100,6 +101,7 @@
 		BD11C31F148AD602002F35C6 /* GOGigVideoInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOGigVideoInfo.m; sourceTree = "<group>"; };
 		BD11C321148AE81D002F35C6 /* GOFetchVideoOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GOFetchVideoOperation.h; sourceTree = "<group>"; };
 		BD11C322148AE81D002F35C6 /* GOFetchVideoOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOFetchVideoOperation.m; sourceTree = "<group>"; };
+		BD11C324148B0272002F35C6 /* TestXib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestXib.xib; sourceTree = "<group>"; };
 		BD5E18CB148A768800C372A0 /* GOMasterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GOMasterTableViewCell.h; sourceTree = "<group>"; };
 		BD5E18CC148A768800C372A0 /* GOMasterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOMasterTableViewCell.m; sourceTree = "<group>"; };
 		BD5E18CD148A768800C372A0 /* ULImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ULImageView.h; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				876C6952148A6373000ECF1C /* GOMasterViewController.xib */,
+				BD11C324148B0272002F35C6 /* TestXib.xib */,
 			);
 			name = Xib;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				BD11C238148AB30B002F35C6 /* Distance.png in Resources */,
 				BD11C239148AB30B002F35C6 /* Distance@2x.png in Resources */,
 				BD11C23A148AB30B002F35C6 /* placeholder.png in Resources */,
+				BD11C325148B0272002F35C6 /* TestXib.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

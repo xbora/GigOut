@@ -13,7 +13,8 @@
 @interface GODetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>{
     
     ULImageView *artistImage;
-    UILabel     *detailDescriptionLabel;
+    UILabel     *venueDetailLabel;
+    UILabel     *startDateLabel;
     UITableView *videoTableView;
     
     GOGig       *gigEvent;
