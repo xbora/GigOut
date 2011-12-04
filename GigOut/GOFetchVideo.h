@@ -15,7 +15,7 @@
 
 @end
 
-@interface GOFetchVideoOperation : NSObject{
+@interface GOFetchVideo : NSObject{
     
     id <GOFetchVideoOperationDelegate> delegate;
     NSString *_artistName;

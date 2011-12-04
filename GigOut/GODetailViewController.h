@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "ULImageView.h"
 #import "GOGig.h"
-#import "GOFetchVideoOperation.h"
+#import "GOFetchVideo.h"
+#import "GOFetchSentiment.h"
 
-@interface GODetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, GOFetchVideoOperationDelegate>{
+
+@interface GODetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, GOFetchVideoOperationDelegate, GOFetchSentimentDelegate>{
     
     ULImageView *artistImage;
     UILabel     *venueDetailLabel;

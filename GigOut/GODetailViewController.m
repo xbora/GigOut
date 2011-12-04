@@ -23,6 +23,7 @@
 
 - (void)retrieveGigVideos;
 - (void)onCreate:(id)sender;
+- (void)showMore;
 
 @end
 
@@ -71,9 +72,27 @@
     UIImage *image = [UIImage imageNamed:@"TopbarButton.png"];
     UIImage* plusIcon = [UIImage imageNamed:@"ICO-PlusTop.png"];
     
+    UIButton *refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [refreshButton setBackgroundImage:image forState:UIControlStateNormal];
+    [refreshButton setImage:plusIcon forState:UIControlStateNormal];
+    [refreshButton addTarget:self action:@selector(onCreate:) forControlEvents:UIControlEventTouchUpInside];
+    refreshButton.frame = CGRectMake(0, 0, plusIcon.size.width + 20, image.size.height);
+    
+    UIBarButtonItem *createButton = [[UIBarButtonItem alloc] initWithCustomView:refreshButton];
+    self.navigationItem.rightBarButtonItem = createButton;
+    [createButton release];   
+    
     UIImageView *bubbleImage = [[UIImageView alloc] initWithFrame:CGRectMake(30., 165., 240., 100.)];
     bubbleImage.image = [[UIImage imageNamed:@"aqua.png"] stretchableImageWithLeftCapWidth:14. topCapHeight:30.];
     [self.view addSubview:bubbleImage];
+    
+    UIButton *moreButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [moreButton setBackgroundImage:[UIImage imageNamed:@"ButtonOrange.png"] forState:UIControlStateNormal];
+    [moreButton setTitle:@"More" forState:UIControlStateNormal];
+    moreButton.frame = CGRectMake(214., 183., 90., 40.);
+    [moreButton addTarget:self action:@selector(showMore) forControlEvents:UIControlEventTouchUpInside];
+    moreButton.transform = CGAffineTransformMakeRotation(0.3);
+    [self.view addSubview:moreButton];
     
     self.venueDetailLabel = [[[UILabel alloc] initWithFrame:CGRectMake(40., 183., 240, 41.)] autorelease];
     venueDetailLabel.numberOfLines = 2;
@@ -86,13 +105,6 @@
     startDateLabel.backgroundColor = [UIColor clearColor];
     startDateLabel.text = gigEvent.startDate;
     [self.view addSubview:startDateLabel];
-    
-    UIButton *refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [refreshButton setBackgroundImage:image forState:UIControlStateNormal];
-    [refreshButton setImage:plusIcon forState:UIControlStateNormal];
-    [refreshButton addTarget:self action:@selector(onCreate:) forControlEvents:UIControlEventTouchUpInside];
-    refreshButton.frame = CGRectMake(214, 183, plusIcon.size.width + 20, image.size.height);
-    [self.view addSubview:refreshButton];
     
     self.videoTableView = [[[UITableView alloc] initWithFrame:CGRectMake(0.0, 262., 320., 162.) style:UITableViewStyleGrouped] autorelease];
     videoTableView.delegate = self;
@@ -146,22 +158,37 @@
 #pragma mark UtilsFunct
 - (void)retrieveGigVideos{
     
-    GOFetchVideoOperation *fetchVideoData = [[GOFetchVideoOperation alloc] initWithArtistName:[gigEvent artistName]];
+    GOFetchVideo *fetchVideoData = [[GOFetchVideo alloc] initWithArtistName:[gigEvent artistName]];
     [fetchVideoData setDelegate:self]; 
     [fetchVideoData retrieveVideoData];
 }
 
 - (void)onCreate:(id)sender{
 
-    
 }
 
+- (void)showMore{
+    
+    GOFetchSentiment *fetchSentiment = [[GOFetchSentiment alloc] initWithArtistName:gigEvent.artistName];
+    [fetchSentiment setDelegate:self];
+    [fetchSentiment retrieveSentimentData];
+}
+
+
 #pragma mark -
-#pragma mark Delegate implementation
+#pragma mark GOFetchVideoDelegate implementation
 - (void)fetchVideoRequestDidFinishWithArray:(NSArray *)gigsVideoArray
 {
     [gigEvent setVideoArray:gigsVideoArray];
     [videoTableView reloadData];
+}
+
+#pragma mark -
+#pragma mark GOFetchSentimentDelegate implementation
+- (void)fetchSentimentRequestDidFinishWithArray:(NSArray *)gigsVideoArray
+{
+//    [gigEvent setVideoArray:gigsVideoArray];
+//    [videoTableView reloadData];
 }
 
 #pragma mark - View lifecycle

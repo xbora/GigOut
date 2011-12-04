@@ -33,7 +33,7 @@
 		BD11C23A148AB30B002F35C6 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = BD11C22E148AB30B002F35C6 /* placeholder.png */; };
 		BD11C31D148AD4B1002F35C6 /* GOGigDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD11C31C148AD4B0002F35C6 /* GOGigDetailTableViewCell.m */; };
 		BD11C320148AD602002F35C6 /* GOGigVideoInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BD11C31F148AD602002F35C6 /* GOGigVideoInfo.m */; };
-		BD11C323148AE81E002F35C6 /* GOFetchVideoOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BD11C322148AE81D002F35C6 /* GOFetchVideoOperation.m */; };
+		BD11C323148AE81E002F35C6 /* GOFetchVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = BD11C322148AE81D002F35C6 /* GOFetchVideo.m */; };
 		BD11C325148B0272002F35C6 /* TestXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD11C324148B0272002F35C6 /* TestXib.xib */; };
 		BD11C406148B310C002F35C6 /* ICO-PlusTop.png in Resources */ = {isa = PBXBuildFile; fileRef = BD11C405148B310C002F35C6 /* ICO-PlusTop.png */; };
 		BD11C409148B3140002F35C6 /* TopbarButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BD11C407148B3140002F35C6 /* TopbarButton.png */; };
@@ -55,6 +55,10 @@
 		BD5E18F0148A79B100C372A0 /* DateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5E18EF148A79B100C372A0 /* DateUtils.m */; };
 		BD5E18F3148A7ED200C372A0 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5E18F2148A7ED200C372A0 /* LocationManager.m */; };
 		BD8C6465148A6E8500D39132 /* libUberLifeLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD8C6456148A6E1A00D39132 /* libUberLifeLib.a */; };
+		BDA71FA3148B718F00A034B8 /* ButtonOrange.png in Resources */ = {isa = PBXBuildFile; fileRef = BDA71FA1148B718F00A034B8 /* ButtonOrange.png */; };
+		BDA71FA4148B718F00A034B8 /* ButtonOrange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BDA71FA2148B718F00A034B8 /* ButtonOrange@2x.png */; };
+		BDA71FA7148B77A300A034B8 /* GOFetchSentiment.m in Sources */ = {isa = PBXBuildFile; fileRef = BDA71FA6148B77A300A034B8 /* GOFetchSentiment.m */; };
+		BDA71FAA148B7B8100A034B8 /* GOGigSentiment.m in Sources */ = {isa = PBXBuildFile; fileRef = BDA71FA9148B7B8100A034B8 /* GOGigSentiment.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,8 +116,8 @@
 		BD11C31C148AD4B0002F35C6 /* GOGigDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOGigDetailTableViewCell.m; sourceTree = "<group>"; };
 		BD11C31E148AD602002F35C6 /* GOGigVideoInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GOGigVideoInfo.h; sourceTree = "<group>"; };
 		BD11C31F148AD602002F35C6 /* GOGigVideoInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOGigVideoInfo.m; sourceTree = "<group>"; };
-		BD11C321148AE81D002F35C6 /* GOFetchVideoOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GOFetchVideoOperation.h; sourceTree = "<group>"; };
-		BD11C322148AE81D002F35C6 /* GOFetchVideoOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOFetchVideoOperation.m; sourceTree = "<group>"; };
+		BD11C321148AE81D002F35C6 /* GOFetchVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GOFetchVideo.h; sourceTree = "<group>"; };
+		BD11C322148AE81D002F35C6 /* GOFetchVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOFetchVideo.m; sourceTree = "<group>"; };
 		BD11C324148B0272002F35C6 /* TestXib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestXib.xib; sourceTree = "<group>"; };
 		BD11C405148B310C002F35C6 /* ICO-PlusTop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ICO-PlusTop.png"; sourceTree = "<group>"; };
 		BD11C407148B3140002F35C6 /* TopbarButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TopbarButton.png; sourceTree = "<group>"; };
@@ -142,6 +146,12 @@
 		BD5E18F2148A7ED200C372A0 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		BD5E18F5148A7FCE00C372A0 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
 		BD8C6450148A6E1A00D39132 /* UberLifeLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = UberLifeLib.xcodeproj; path = ../UberLifeLib/UberLifeLib.xcodeproj; sourceTree = "<group>"; };
+		BDA71FA1148B718F00A034B8 /* ButtonOrange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonOrange.png; sourceTree = "<group>"; };
+		BDA71FA2148B718F00A034B8 /* ButtonOrange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ButtonOrange@2x.png"; sourceTree = "<group>"; };
+		BDA71FA5148B77A300A034B8 /* GOFetchSentiment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GOFetchSentiment.h; sourceTree = "<group>"; };
+		BDA71FA6148B77A300A034B8 /* GOFetchSentiment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOFetchSentiment.m; sourceTree = "<group>"; };
+		BDA71FA8148B7B8100A034B8 /* GOGigSentiment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GOGigSentiment.h; sourceTree = "<group>"; };
+		BDA71FA9148B7B8100A034B8 /* GOGigSentiment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOGigSentiment.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,8 +235,10 @@
 			children = (
 				876C6967148A671F000ECF1C /* GOFetchGigsOperation.h */,
 				876C6968148A671F000ECF1C /* GOFetchGigsOperation.m */,
-				BD11C321148AE81D002F35C6 /* GOFetchVideoOperation.h */,
-				BD11C322148AE81D002F35C6 /* GOFetchVideoOperation.m */,
+				BD11C321148AE81D002F35C6 /* GOFetchVideo.h */,
+				BD11C322148AE81D002F35C6 /* GOFetchVideo.m */,
+				BDA71FA5148B77A300A034B8 /* GOFetchSentiment.h */,
+				BDA71FA6148B77A300A034B8 /* GOFetchSentiment.m */,
 			);
 			name = Operations;
 			sourceTree = "<group>";
@@ -238,6 +250,8 @@
 				876C696F148A7A2A000ECF1C /* GOGig.m */,
 				BD11C31E148AD602002F35C6 /* GOGigVideoInfo.h */,
 				BD11C31F148AD602002F35C6 /* GOGigVideoInfo.m */,
+				BDA71FA8148B7B8100A034B8 /* GOGigSentiment.h */,
+				BDA71FA9148B7B8100A034B8 /* GOGigSentiment.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -271,6 +285,8 @@
 		BD5E15D9148A751700C372A0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BDA71FA1148B718F00A034B8 /* ButtonOrange.png */,
+				BDA71FA2148B718F00A034B8 /* ButtonOrange@2x.png */,
 				BD11C40B148B31C6002F35C6 /* speach bubbles */,
 				BD11C407148B3140002F35C6 /* TopbarButton.png */,
 				BD11C408148B3140002F35C6 /* TopbarButton@2x.png */,
@@ -431,6 +447,8 @@
 				BD11C41D148B31C6002F35C6 /* pink.png in Resources */,
 				BD11C41E148B31C6002F35C6 /* purple.png in Resources */,
 				BD11C41F148B31C6002F35C6 /* yellow.png in Resources */,
+				BDA71FA3148B718F00A034B8 /* ButtonOrange.png in Resources */,
+				BDA71FA4148B718F00A034B8 /* ButtonOrange@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,7 +473,9 @@
 				876C6970148A7A2A000ECF1C /* GOGig.m in Sources */,
 				BD11C31D148AD4B1002F35C6 /* GOGigDetailTableViewCell.m in Sources */,
 				BD11C320148AD602002F35C6 /* GOGigVideoInfo.m in Sources */,
-				BD11C323148AE81E002F35C6 /* GOFetchVideoOperation.m in Sources */,
+				BD11C323148AE81E002F35C6 /* GOFetchVideo.m in Sources */,
+				BDA71FA7148B77A300A034B8 /* GOFetchSentiment.m in Sources */,
+				BDA71FAA148B7B8100A034B8 /* GOGigSentiment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

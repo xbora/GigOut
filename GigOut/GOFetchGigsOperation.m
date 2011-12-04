@@ -62,18 +62,16 @@
                                         @"51.549751017014245",
                                         @"-1.494140625", apiKey];
             NSURL *fetchUrl = [NSURL URLWithString: fetchUrlString];
-            NSStringEncoding encoding;
-            
-            //fetch data from web service
-            NSString *jsonString = [NSString stringWithContentsOfURL:fetchUrl usedEncoding:&encoding error:nil];
-            PSLogDebug(@"json %@", jsonString);
-            NSData *jsonData = [jsonString dataUsingEncoding:NSUTF32BigEndianStringEncoding];
+            NSURLRequest *request = [NSURLRequest requestWithURL:fetchUrl];
+            NSURLResponse *response = nil;
+            NSError *error = nil;
+            NSData *receivedData = [NSURLConnection sendSynchronousRequest:request 
+                                                                returningResponse:&response 
+                                                                            error:&error];
             NSError *jsonError = nil;
-            NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&jsonError];
+            NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:receivedData options:kNilOptions error:&jsonError];
             
-            //check to see if we have been cancelled
-            if (![self isCancelled] && dictionary != nil)
-            {                    
+            if (dictionary != nil) {
                 NSArray *events = [[dictionary objectForKey:@"events"] objectForKey:@"event"];
                 if (events) {
                     for (NSDictionary *event in events)
@@ -84,9 +82,8 @@
                         
                         NSDictionary *artists = [event objectForKey:@"artists"];
                         
-                        
                         gig.artistName = [artists objectForKey:@"headliner"];                            
-                       
+                        
                         NSDictionary *venue = [event objectForKey:@"venue"];
                         
                         gig.venueId = [venue objectForKey:@"id"]; 
@@ -110,15 +107,29 @@
                         NSArray *imgArray = [event objectForKey:@"image"];
                         for (NSDictionary *imgJSON in imgArray) {
                             if ([[imgJSON valueForKey:@"size"] isEqualToString:@"extralarge"]) {
-                                    gig.artistImgUrl = [imgJSON valueForKey:@"#text"];
-                                }
+                                gig.artistImgUrl = [imgJSON valueForKey:@"#text"];
+                            }
                         }
                         gig.startDate = [event objectForKey:@"startDate"];
                         
                         [gigs addObject:gig];
                     }                    
                 }
+
             }
+
+//            NSStringEncoding encoding;
+//            //fetch data from web service
+//            NSString *jsonString = [NSString stringWithContentsOfURL:fetchUrl usedEncoding:&encoding error:nil];
+//            PSLogDebug(@"json %@", jsonString);
+//            NSData *jsonData = [jsonString dataUsingEncoding:NSUTF32BigEndianStringEncoding];
+//            NSError *jsonError = nil;
+//            NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&jsonError];
+            
+            //check to see if we have been cancelled
+//            if (![self isCancelled] && dictionary != nil)
+//            {                    
+//            }
          
             if (delegate != nil &&
                 [delegate respondsToSelector:@selector(fetchRequestDidFinishWithArray:)]){

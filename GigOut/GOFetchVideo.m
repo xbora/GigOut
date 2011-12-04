@@ -6,15 +6,15 @@
 //  Copyright (c) 2011 la sua. All rights reserved.
 //
 
-#import "GOFetchVideoOperation.h"
+#import "GOFetchVideo.h"
 
 #define kMaxNumberOfVideos  4
 
-@interface GOFetchVideoOperation ()
+@interface GOFetchVideo ()
 
 @end
 
-@implementation GOFetchVideoOperation
+@implementation GOFetchVideo
 
 @synthesize delegate;
 @synthesize artistName = _artistName;
