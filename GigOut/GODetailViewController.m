@@ -201,10 +201,18 @@
 
 #pragma mark -
 #pragma mark GOFetchSentimentDelegate implementation
-- (void)fetchSentimentRequestDidFinishWithArray:(NSArray *)gigsVideoArray
+- (void)fetchSentimentRequestDidFinishWithMessage:(NSString *)sentimentMessage;
 {
-//    [gigEvent setVideoArray:gigsVideoArray];
-//    [videoTableView reloadData];
+    if (!sentimentMessage) {
+        sentimentMessage = @"No sentiments found";
+    }
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Track Sentiment" 
+                                                    message:sentimentMessage
+                                                   delegate:self 
+                                          cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+    [alert release];
 }
 
 #pragma mark - View lifecycle

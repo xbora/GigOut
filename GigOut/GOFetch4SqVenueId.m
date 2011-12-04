@@ -73,6 +73,7 @@
                     NSLog(@"string contains bla!");
                     venue4sqId = [venue objectForKey:
                                               @"id"];
+                    break;
                     
                 }
             }

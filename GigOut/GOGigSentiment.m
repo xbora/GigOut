@@ -39,26 +39,32 @@
     
     NSString *finalString = @"";
     
-    
+    finalString = [finalString stringByAppendingString:[self getLoudnessMessage]];
+    finalString = [finalString stringByAppendingString:[self getEnergyMessage]];
+    finalString = [finalString stringByAppendingString:[self getDaceabilityMessage]];
+
     return finalString;
 }
 
 - (NSString *)getLoudnessMessage{
     
-    NSString *loudString = @"";
+    NSString *loudString = nil;
     
-    NSString *test = @"";    
     CGFloat range = kMaxLoudness - kMinLoudness;
     CGFloat gap = range/kRangeValue;
     
     if (_loudness < gap) {
-        loudString = @"";
+        loudString = @"low loud";
     }
     else if (_loudness < gap*2) {
-        loudString = @"";
+        loudString = @"medium loud";
     }
     else if (_loudness < gap*3) {
-        loudString = @"";
+        loudString = @"high loud";
+    }
+    
+    if (![loudString isEqualToString:@""]) {
+        loudString = [loudString stringByAppendingFormat:@"\n"];
     }
     
     return loudString;
@@ -66,13 +72,47 @@
 
 - (NSString *)getEnergyMessage{
     
-    NSString *energyString = @"";
+    NSString *energyString = nil;
+    
+    CGFloat range = kMaxEnergy - kMinEnergy;
+    CGFloat gap = range/kRangeValue;
+    
+    if (_energy < gap) {
+        energyString = @"low energy";
+    }
+    else if (_energy < gap*2) {
+        energyString = @"medium energy";
+    }
+    else if (_energy < gap*3) {
+        energyString = @"high energy";
+    }
+    
+    if (![energyString isEqualToString:@""]) {
+        energyString = [energyString stringByAppendingFormat:@"\n"];
+    }
     
     return energyString;
 }
 - (NSString *)getDaceabilityMessage{
     
-    NSString *danceString = @"";
+    NSString *danceString = nil;
+    
+    CGFloat range = kMaxDancebility - kMinDancebility;
+    CGFloat gap = range/kRangeValue;
+    
+    if (_danceability < gap) {
+        danceString = @"low dance";
+    }
+    else if (_danceability < gap*2) {
+        danceString = @"medium dance";
+    }
+    else if (_danceability < gap*3) {
+        danceString = @"high dance";
+    }
+    
+    if (![danceString isEqualToString:@""]) {
+        danceString = [danceString stringByAppendingFormat:@"\n"];
+    }
     
     return danceString;
 }
