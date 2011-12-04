@@ -59,19 +59,22 @@
             if (dictionary != nil && !jsonError) {
                 NSArray *dataArray = [[dictionary objectForKey:@"response"] objectForKey:@"songs"];
                 if (dataArray) {
-                    NSDictionary *song = [dataArray objectAtIndex:0];
-                    {
-                        if (song) {
-                            GOGigSentiment *gigSentiment = [[GOGigSentiment alloc] init];
-                            [gigSentiment setTempo:[(NSNumber*)[song objectForKey:@"tempo"] floatValue]];
-                            [gigSentiment setLoudness:[(NSNumber*)[song objectForKey:@"loudness"] floatValue]];
-                            [gigSentiment setDuration:[(NSNumber*)[song objectForKey:@"duration"] floatValue]];
-                            [gigSentiment setEnergy:[(NSNumber*)[song objectForKey:@"energy"] floatValue]];
-                            [gigSentiment setDanceability:[(NSNumber*)[song objectForKey:@"danceability"] floatValue]];
-                            
-                            return [gigSentiment sentimentString];
-                        }
-                    }                    
+                    if ([dataArray count] > 0) {
+                        
+                        NSDictionary *song = [dataArray objectAtIndex:0];
+                        {
+                            if (song) {
+                                GOGigSentiment *gigSentiment = [[GOGigSentiment alloc] init];
+                                [gigSentiment setTempo:[(NSNumber*)[song objectForKey:@"tempo"] floatValue]];
+                                [gigSentiment setLoudness:[(NSNumber*)[song objectForKey:@"loudness"] floatValue]];
+                                [gigSentiment setDuration:[(NSNumber*)[song objectForKey:@"duration"] floatValue]];
+                                [gigSentiment setEnergy:[(NSNumber*)[song objectForKey:@"energy"] floatValue]];
+                                [gigSentiment setDanceability:[(NSNumber*)[song objectForKey:@"danceability"] floatValue]];
+                                
+                                return [gigSentiment sentimentString];
+                            }
+                        }  
+                    }
                 }
             }
         }

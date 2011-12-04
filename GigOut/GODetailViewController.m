@@ -13,6 +13,10 @@
 #import "GOAppDelegate.h"
 #import "PSLog.h"
 #import "GOFetch4SqVenueId.h"
+#import "ASIHTTPRequest.h"
+#import "ASIFormDataRequest.h"
+#import "Constants.h"
+#import "SFHFKeychainUtils.h"
 
 @interface GODetailViewController ()
 
@@ -25,6 +29,7 @@
 - (void)retrieveGigVideos;
 - (void)onCreate:(id)sender;
 - (void)showMore;
+- (void)postHangoutEventWithId:(NSString *)hangoutId;
 
 @end
 
@@ -64,9 +69,9 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    self.artistImage = [[[ULImageView alloc] initWithFrame:CGRectMake(49., 20., 222., 140.)] autorelease];
+    self.artistImage = [[[ULImageView alloc] initWithFrame:CGRectMake(85., 20., 130., 140.)] autorelease];
     artistImage.contentMode = UIViewContentModeScaleToFill;
-    artistImage.autoresizesSubviews = NO;
+    artistImage.autoresizesSubviews = YES;
     artistImage.urlStr = gigEvent.artistLargeImgUrl;
     [self.view addSubview:artistImage];
     
@@ -191,11 +196,11 @@
 
 - (void)fetchRequestDidFinishWithVenueId:(NSString *)venue4SqId
 {
-    //    [gigEvent setVideoArray:gigsVideoArray];
-    //    [videoTableView reloadData];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Venue id is" message:[NSString stringWithFormat:@"%@",venue4SqId] delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles: nil];
-    [alert show];
-    [alert release];
+    [self postHangoutEventWithId:venue4SqId];
+//
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Venue id is" message:[NSString stringWithFormat:@"%@",venue4SqId] delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles: nil];
+//    [alert show];
+//    [alert release];
 }
 
 
@@ -211,11 +216,81 @@
                                                     message:sentimentMessage
                                                    delegate:self 
                                           cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    
     [alert show];
     [alert release];
 }
 
 #pragma mark - View lifecycle
+
+- (void)postHangoutEventWithId:(NSString *)hangoutId{
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Hangout"
+                                                     message:@"Hangout created succesfully!" 
+                                                    delegate:nil 
+                                           cancelButtonTitle:@"OK" 
+                                           otherButtonTitles:nil];
+    [alert show];
+    [alert release];
+//    NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",URL_ENDPOINT, SOCIALS_PATH]];
+//    
+//    NSLog(@"Publish hangout url:%@", url);
+//    ASIFormDataRequest* m_formRequest = [[ASIFormDataRequest alloc] initWithURL:url];
+//    [m_formRequest setAuthenticationScheme:(NSString *)kCFHTTPAuthenticationSchemeBasic];
+//        
+//    NSError * error = nil;
+//    NSString * password = @"$2a$10$VFfwe7PT6T99kw4nEMJ89OJR53l5VIM625usghQrbPIYuGXKaCR96";
+//    if (error) {
+//        NSLog(@"Key Chain error:%@", [error localizedDescription]);
+//        return;
+//    }
+//    
+//    [m_formRequest setRequestMethod:@"POST"];
+//    [m_formRequest setUsername:@"4ed949fde1bfdf0001000005"];
+//    [m_formRequest setPassword: password];
+//    [m_formRequest setPostValue:gigEvent.gigName forKey:@"name"];
+//    [m_formRequest setPostValue:@"4ed949fde1bfdf0001000005" forKey:@"user_id"];
+//    [m_formRequest setPostValue:gigEvent.venueName forKey:@"long_description"];
+//    [m_formRequest setPostValue:[NSDate date] forKey:@"start_date_time"];
+//    [m_formRequest setPostValue:[NSNumber numberWithBool:YES] forKey:@"is_public"];
+//    [m_formRequest setPostValue:[NSNumber numberWithBool:NO] forKey:@"post_to_facebook"];
+//    [m_formRequest setPostValue:[NSNumber numberWithInt:1000] forKey:@"capacity"];
+////    [m_formRequest setPostValue:[_selectedOrientations componentsJoinedByString: @","] forKey:@"orientations"];
+////    [m_formRequest setPostValue:[_selectedRelationships componentsJoinedByString: @","] forKey:@"relationship_type_categories"];
+//    [m_formRequest setPostValue:@"Male" forKey:@"hangout_gender_id"];
+//    [m_formRequest setPostValue:[NSNumber numberWithInt:24] forKey:@"age_min"];
+//    [m_formRequest setPostValue:[NSNumber numberWithInt:80] forKey:@"age_max"];
+//    
+//    [m_formRequest setPostValue:@"4e4a7c0a28d22d0002000056" forKey:@"main_venue_id"];
+//    [m_formRequest setPostValue:@"Party" forKey:@"tag_list"];
+//    [m_formRequest setDelegate:self];
+//    [m_formRequest startAsynchronous];
+}
+
+#pragma mark -
+#pragma mark ASIHTTPRequestDelegate
+
+// Called when a request starts, lets the delegate know via didStartSelector
+- (void)didReceiveDataSelector:(NSData *)data{
+    NSString *string = [[[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding] autorelease];
+    NSLog(@"Data receiveed %@", string);
+}
+
+- (void)requestStarted{
+    NSLog(@"Data Started");
+
+}
+
+// Called when a request completes successfully, lets the delegate know via didFinishSelector
+- (void)requestFinished{
+    NSLog(@"Data finished");
+}
+
+// Called when a request fails, and lets the delegate know via didFailSelector
+- (void)failWithError:(NSError *)theError{
+    
+    NSLog(@"Data error %@", [theError userInfo]);
+}
 
 - (void)viewDidUnload
 {
