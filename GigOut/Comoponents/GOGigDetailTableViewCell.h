@@ -10,12 +10,10 @@
 
 @interface GOGigDetailTableViewCell : UITableViewCell{
     
-    UIWebView *videoView;
     UILabel   *videoLabel;
     NSString  *urlString;
 }
 
-@property (nonatomic, retain) UIWebView *videoView;
 @property (nonatomic, retain) UILabel  *videoLabel;
 
 - (id)initWithUrlString:(NSString *)_url reuseIdentifier:(NSString *)reuseIdentifier;

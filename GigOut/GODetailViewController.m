@@ -22,6 +22,7 @@
 @property (nonatomic, retain) GOGig       *gigEvent;
 
 - (void)retrieveGigVideos;
+- (void)onCreate:(id)sender;
 
 @end
 
@@ -62,19 +63,36 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.artistImage = [[[ULImageView alloc] initWithFrame:CGRectMake(49., 20., 222., 140.)] autorelease];
-    artistImage.contentMode = UIViewContentModeScaleAspectFit;
+    artistImage.contentMode = UIViewContentModeScaleToFill;
+    artistImage.autoresizesSubviews = NO;
     artistImage.urlStr = gigEvent.artistImgUrl;
     [self.view addSubview:artistImage];
     
-    self.venueDetailLabel = [[[UILabel alloc] initWithFrame:CGRectMake(40., 173., 240, 41.)] autorelease];
+    UIImage *image = [UIImage imageNamed:@"TopbarButton.png"];
+    UIImage* plusIcon = [UIImage imageNamed:@"ICO-PlusTop.png"];
+    
+    UIImageView *bubbleImage = [[UIImageView alloc] initWithFrame:CGRectMake(30., 165., 240., 100.)];
+    bubbleImage.image = [[UIImage imageNamed:@"aqua.png"] stretchableImageWithLeftCapWidth:14. topCapHeight:30.];
+    [self.view addSubview:bubbleImage];
+    
+    self.venueDetailLabel = [[[UILabel alloc] initWithFrame:CGRectMake(40., 183., 240, 41.)] autorelease];
     venueDetailLabel.numberOfLines = 2;
+    venueDetailLabel.backgroundColor = [UIColor clearColor];
     venueDetailLabel.text = gigEvent.venueName;
     [self.view addSubview:venueDetailLabel];
     
     self.startDateLabel = [[[UILabel alloc] initWithFrame:CGRectMake(40., 213., 240, 41.)] autorelease];
     startDateLabel.numberOfLines = 1;
+    startDateLabel.backgroundColor = [UIColor clearColor];
     startDateLabel.text = gigEvent.startDate;
-    [self.view addSubview:venueDetailLabel];
+    [self.view addSubview:startDateLabel];
+    
+    UIButton *refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [refreshButton setBackgroundImage:image forState:UIControlStateNormal];
+    [refreshButton setImage:plusIcon forState:UIControlStateNormal];
+    [refreshButton addTarget:self action:@selector(onCreate:) forControlEvents:UIControlEventTouchUpInside];
+    refreshButton.frame = CGRectMake(214, 183, plusIcon.size.width + 20, image.size.height);
+    [self.view addSubview:refreshButton];
     
     self.videoTableView = [[[UITableView alloc] initWithFrame:CGRectMake(0.0, 262., 320., 162.) style:UITableViewStyleGrouped] autorelease];
     videoTableView.delegate = self;
@@ -105,17 +123,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    NSString *videoUrl = [(GOGigVideoInfo *)[gigEvent.videoArray objectAtIndex:indexPath.row] videoStringUrl];
+    NSString *descriptionString = [(GOGigVideoInfo *)[gigEvent.videoArray objectAtIndex:indexPath.row] videoDescription];
     
+    static NSString *CellIdentifier = @"Cell";
     GOGigDetailTableViewCell *cell = (GOGigDetailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        NSString *videoUrl = [(GOGigVideoInfo *)[gigEvent.videoArray objectAtIndex:indexPath.row] videoStringUrl];
-        NSString *descriptionString = [(GOGigVideoInfo *)[gigEvent.videoArray objectAtIndex:indexPath.row] videoDescription];
-        
+    if (cell == nil) {        
         cell = [[[GOGigDetailTableViewCell alloc] initWithUrlString:videoUrl
                                                  reuseIdentifier:CellIdentifier] autorelease];
-        cell.videoLabel.text = descriptionString;
     }
+    cell.videoLabel.text = descriptionString;
+
     return cell;
 }
 
@@ -128,15 +146,22 @@
 #pragma mark UtilsFunct
 - (void)retrieveGigVideos{
     
-    // Parse here the gigEvent.videoArray obJect and then reload the tableView
-    
-    [self.videoTableView reloadData];
+    GOFetchVideoOperation *fetchVideoData = [[GOFetchVideoOperation alloc] initWithArtistName:[gigEvent artistName]];
+    [fetchVideoData setDelegate:self]; 
+    [fetchVideoData retrieveVideoData];
 }
 
-- (void)didReceiveMemoryWarning
+- (void)onCreate:(id)sender{
+
+    
+}
+
+#pragma mark -
+#pragma mark Delegate implementation
+- (void)fetchVideoRequestDidFinishWithArray:(NSArray *)gigsVideoArray
 {
-    [super didReceiveMemoryWarning];
-    // Release any cached data, images, etc that aren't in use.
+    [gigEvent setVideoArray:gigsVideoArray];
+    [videoTableView reloadData];
 }
 
 #pragma mark - View lifecycle
@@ -147,5 +172,11 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
-							
+	
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Release any cached data, images, etc that aren't in use.
+}
+
 @end

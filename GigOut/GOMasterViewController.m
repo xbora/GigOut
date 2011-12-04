@@ -35,6 +35,7 @@
 {
     self.gigsArray = nil;
     [operationQueue_ release];
+    operationQueue_ = nil;
     [super dealloc];
 }
 

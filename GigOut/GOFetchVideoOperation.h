@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GOGigVideoInfo.h"
 
 @protocol GOFetchVideoOperationDelegate <NSObject>
 
@@ -14,14 +15,16 @@
 
 @end
 
-@interface GOFetchVideoOperation : NSOperation{
+@interface GOFetchVideoOperation : NSObject{
     
     id <GOFetchVideoOperationDelegate> delegate;
-
+    NSString *_artistName;
 }
 
 @property (nonatomic, assign) id <GOFetchVideoOperationDelegate> delegate;
+@property (nonatomic, copy) NSString *artistName;
 
 - (id) initWithArtistName:(NSString *)artistName;
+- (void)retrieveVideoData;
 
 @end

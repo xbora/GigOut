@@ -8,22 +8,23 @@
 
 #import "GOFetchVideoOperation.h"
 
-@interface GOFetchVideoOperation ()
+#define kMaxNumberOfVideos  4
 
-- (void)fetchVideoRequestForArtistName:(NSString *)artistName;
+@interface GOFetchVideoOperation ()
 
 @end
 
 @implementation GOFetchVideoOperation
 
 @synthesize delegate;
+@synthesize artistName = _artistName;
 
 - (id) initWithArtistName:(NSString *)artistName
 {
     self = [super init];
     if (self)
     {
-        [self fetchVideoRequestForArtistName:artistName];
+        _artistName = artistName;
     }
     return self;
 }
@@ -38,53 +39,42 @@
 
 #pragma mark - Operation main method
 
-- (void)fetchVideoRequestForArtistName:(NSString *)artistName;
+-(void)retrieveVideoData
 {
-    @try {        
-        //check to see if we have been cancelled.
-        if (![self isCancelled])
-        {
-            // Change the request with the youtube video one!
-            
-            NSMutableArray *gigs = [[NSMutableArray alloc] init];
-            NSString *apiKey = @"b25b959554ed76058ac220b7b2e0a026";
-            NSString *fetchUrlString = [NSString stringWithFormat:@"http://ws.audioscrobbler.com/2.0/?method=geo.getevents&limit=25&lat=%@&lng=%@&format=json&api_key=%@",
-                                        @"51.549751017014245",
-                                        @"-1.494140625", apiKey];
-            NSURL *fetchUrl = [NSURL URLWithString: fetchUrlString];
-            NSStringEncoding encoding;
-            
-            //fetch data from web service
-            NSString *jsonString = [NSString stringWithContentsOfURL:fetchUrl usedEncoding:&encoding error:nil];
-            NSData *jsonData = [jsonString dataUsingEncoding:NSUTF32BigEndianStringEncoding];
-            NSError *jsonError = nil;
-            NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&jsonError];
-            
-            //check to see if we have been cancelled
-            if (![self isCancelled] && dictionary != nil)
-            {                    
-                NSArray *events = [[dictionary objectForKey:@"events"] objectForKey:@"event"];
-                if (events) {
-                    for (NSDictionary *event in events)
-                    {
-                        
-                    }                    
-                }
-            }
-            
-            if (delegate != nil &&
-                [delegate respondsToSelector:@selector(fetchVideoRequestDidFinishWithArray:)]){
-                [delegate fetchVideoRequestDidFinishWithArray:gigs];
-            }
-            
-            [gigs release];
-        }  
-    }
-    @catch (NSException *e) {
-        NSLog(@"%@", e);
+    NSMutableArray *gigs = [[NSMutableArray alloc] init];
+    NSString *fetchUrlString = [NSString stringWithFormat:@"http://gdata.youtube.com/feeds/api/videos?max-results=%i&v=2&alt=jsonc&q=%@",kMaxNumberOfVideos, [_artistName stringByAddingPercentEscapesUsingEncoding: NSASCIIStringEncoding]];
+    NSURL *fetchUrl = [NSURL URLWithString: fetchUrlString];
+    NSStringEncoding encoding;
+    
+    //fetch data from web service
+    NSString *jsonString = [NSString stringWithContentsOfURL:fetchUrl usedEncoding:&encoding error:nil];
+    
+    NSError *jsonError = nil;
+    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF32BigEndianStringEncoding];
+    NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&jsonError];
+    
+    //check to see if we have been cancelled
+    if (dictionary != nil)
+    {                    
+        NSArray *data = [[dictionary objectForKey:@"data"] objectForKey:@"items"];
+        if (data) {
+            for (NSDictionary *item in data)
+            {
+                GOGigVideoInfo *videoInfo = [[GOGigVideoInfo alloc] init];
+                [videoInfo setVideoDescription:[item objectForKey:@"description"]];
+                [videoInfo setVideoStringUrl:[[item objectForKey:@"content"] objectForKey:@"5"]];
+                [gigs addObject:videoInfo];
+                NSLog(@"mobile is: %@", [[item objectForKey:@"content"] objectForKey:@"5"] );
+            }                    
+        }
     }
     
+    if (delegate != nil &&
+        [delegate respondsToSelector:@selector(fetchVideoRequestDidFinishWithArray:)]){
+        [delegate performSelector:@selector(fetchVideoRequestDidFinishWithArray:) withObject:gigs];
+    }
     
+    [gigs release];
 }
 
 @end

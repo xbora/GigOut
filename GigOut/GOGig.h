@@ -27,7 +27,7 @@
     NSString *startDate_;
     NSString *description_;
     
-    NSMutableArray *videoArray_; // A GOGigVideoInfo array
+    NSArray *videoArray_; // A GOGigVideoInfo array
 }
 
 @property (nonatomic, copy) NSString *gigName;
@@ -45,7 +45,7 @@
 @property (nonatomic, copy) NSString *venuePhone;
 @property (nonatomic, copy) NSString *description;
 @property (nonatomic, retain) NSString *startDate;
-@property (nonatomic, retain) NSMutableArray *videoArray;
+@property (nonatomic, retain) NSArray *videoArray;
 
 
 @end

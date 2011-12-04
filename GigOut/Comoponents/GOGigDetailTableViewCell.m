@@ -8,23 +8,28 @@
 
 #import "GOGigDetailTableViewCell.h"
 
-#define kWebViewPadding 10
+#define kWebViewPadding 10.
 
 @interface GOGigDetailTableViewCell ()
 
 @property (nonatomic, retain) NSString  *urlString;
 
-- (void)embedYouTube:(NSString*)url frame:(CGRect)frame;
+- (void)embedYouTube:(NSString*)url forWebView:(UIWebView *)webView;
 - (void)defaultCell;
 
 @end
 
 @implementation GOGigDetailTableViewCell
 
-@synthesize videoView;
 @synthesize videoLabel;
 @synthesize urlString;
 
+- (void)dealloc{
+
+    self.videoLabel = nil;
+    self.urlString = nil;
+    [super dealloc];
+}
 - (id)initWithUrlString:(NSString *)_url reuseIdentifier:(NSString *)reuseIdentifier{
     
     self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
@@ -32,15 +37,7 @@
         self.urlString = _url;
         
         [self defaultCell];
-    }
-    return self;
-}
-
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        
+       // [self performSelectorOnMainThread:@selector(defaultCell) withObject:nil waitUntilDone:NO];
     }
     return self;
 }
@@ -48,35 +45,34 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:NO animated:NO];
-
 }
 
 - (void)defaultCell{
-    
-    self.videoView = [[[UIWebView alloc] initWithFrame:CGRectMake(kWebViewPadding*2, kWebViewPadding, 90., 60.)] autorelease];
+        
+    UIWebView *videoView = [[UIWebView alloc] initWithFrame:CGRectMake(kWebViewPadding*2, kWebViewPadding, 90., 60.)];
     videoView.backgroundColor = [UIColor blackColor];
-    [self embedYouTube:urlString frame:videoView.frame];
+    [self embedYouTube:urlString forWebView:videoView];
     [self addSubview:videoView];
     
     self.videoLabel = [[[UILabel alloc] initWithFrame:
-                        CGRectMake(CGRectGetWidth(self.videoView.frame) + 45, kWebViewPadding, 163, 60)] autorelease];
-    videoLabel.numberOfLines = 2;
+                        CGRectMake(CGRectGetWidth(videoView.frame) + 45, kWebViewPadding, 163, 60)] autorelease];
+    videoLabel.numberOfLines = 3;
     videoLabel.backgroundColor = [UIColor clearColor];
     videoLabel.textAlignment = UITextAlignmentLeft;
-    videoLabel.font = [UIFont systemFontOfSize:16.];
+    videoLabel.font = [UIFont systemFontOfSize:14.];
     videoLabel.textColor = [UIColor grayColor];
     [self addSubview:videoLabel];
 }
 
-- (void)embedYouTube:(NSString*)url frame:(CGRect)frame {  
+- (void)embedYouTube:(NSString*)url forWebView:(UIWebView *)webView{  
     NSString* embedHTML = @"<html><head><style type=\"text/css\">\
     body {background-color: transparent; color: black;}</style>\
     </head><body style=\"margin:0\">\
     <embed id=\"yt\" src=\"%@\" type=\"application/x-shockwave-flash\"\
     width=\"%f\" height=\"%f\"></embed></body></html>";  
     
-    NSString* html = [NSString stringWithFormat:embedHTML, url, frame.size.width, frame.size.height];
+    NSString* html = [NSString stringWithFormat:embedHTML, url, webView.frame.size.width, webView.frame.size.height];
 
-    [self.videoView loadHTMLString:html baseURL:nil];  
+    [webView loadHTMLString:html baseURL:nil];  
 }
 @end

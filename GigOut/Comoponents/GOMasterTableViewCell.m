@@ -130,6 +130,8 @@
         
         [self.contentView addSubview:lineImageView];
         [self.contentView sendSubviewToBack: lineImageView];
+        
+        [lineImageView release];
     }
     return self;
 }
